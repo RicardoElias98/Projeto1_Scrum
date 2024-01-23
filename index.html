@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Scrum Board</title>
+    <link rel="stylesheet" href="interface.css">
 </head>
 <body>
+   <!-- Criação da classe formulário do login e direcionada para "action=''""-->
+    <h2>Iniciar Sessão</h2>
+    <form class="formulario_do_login" action="#">
+    <!-- Label do username -->
+        <label for="username">Nome de Utilizador:</label>
+    <!-- Tipo texto, com id, nome e com required (tem de ser preenchida para avançar) -->
+        <input type="text" id="username" name="username" required >
+    <!-- Label da password -->
+        <label for="password">Palavra-passe:</label>
+    <!-- Tipo password, com id, nome e com required (tem de ser preenchida para avançar) -->
+        <input type="password" id="password" name="password" required>
+    <!-- Checkbox com o método em JS para ver a passord -->
+        <input type="checkbox" onclick="VerPassword()"> Ver password
+    <!-- Botão para conlcuir o login -->
+        <button type="submit">Login</button>
+    </form>
+
     
+
+
 </body>
 </html>
