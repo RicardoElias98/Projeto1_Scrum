@@ -3,7 +3,7 @@ body, html {
     margin: 0;
     display: flex; /* cria um layout flexível  */
     align-items: center; /* alinha verticalmente */
-    justify-content: center; /* alinha horizontalmente */
+    justify-content: center; /* alinha horizontal */
 }
 
 
@@ -68,6 +68,28 @@ body, html {
    margin-bottom: 10px; /* sobe o label para alinhar */
 
 }
+
+#pausarVideo {
+    display: flex;
+    align-items: center;
+}
+
+#pausarVideo input{
+    margin-right: 0px; /* tira a margem direita */
+    width: 10%; /* altera a largura inicial para os inputs para 10%  */
+
+}
+   
+
+#pausarVideo label {
+   white-space: nowrap; /* impede que o texto seja "partido" */
+
+   margin-left: 0px; /* tira a margem esquerda */
+
+   margin-bottom: 10px; /* sobe o label para alinhar */
+
+}
+
 
 #TituloPainelLogin {
     text-align: center;
