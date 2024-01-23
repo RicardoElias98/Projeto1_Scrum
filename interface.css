@@ -1,3 +1,68 @@
-.formulario_do_login {
 
+/*body{
+    background-image: url("Imagens/Fundo2.jpeg");
+}*/
+
+/* Estilo do "painel do login" */
+.formulario_do_login {
+    width: 300px; /* largura */
+    margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
+    background-color: white;
+    padding: 20px; /* espaçamento interno */
+    border-radius: 8px; /*  arredonda os cantos */
+    box-shadow: 0 0 10px black;
+    text-align: center;
 }
+
+/* Estilo dos labels "nome de utilizador e palavra-passe*/
+.formulario_do_login label {
+    display: block; /* cada label fica numa linha diferente */
+    text-align: left;
+    margin-bottom: 5px; 
+    border-radius: 8px; /* adiciona uma margem na parte inferior */
+}
+
+/* Estilo das boxs para inserir os dados */
+.formulario_do_login input {
+    width: 100%; /* ocupa toda a largura do  */
+    padding: 10px; /* espaçamento interno */
+    margin-bottom: 15px; 
+    box-sizing: border-box;
+    border-style: solid;
+    border-radius: 8px; /* garante que o padding não altere a largura total */
+}
+
+/* Estilo do botão de confirmar o login */
+.formulario_do_login button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none; /* remove a borda */
+    border-radius: 8px; 
+    cursor: pointer; /* o curso tranforma-se numa mão */
+    box-shadow: 0 0 10px gray;
+}
+
+#checkPassword {
+    display: flex;
+    align-items: center;
+}
+
+#checkPassword input{
+    margin-right: 0px;
+    width: 10%;
+}
+   
+
+#checkPassword label {
+   white-space: nowrap;
+   margin-left: 0px;
+   margin-bottom: 10px;
+}
+
+#TituloPainelLogin {
+    text-align: center;
+}
+
+
+
