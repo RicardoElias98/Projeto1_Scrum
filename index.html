@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="interface.css">
 </head>
 <body>
-
-   <!-- Título "Iniciar Sessão" com id -->
-    <h2 id="TituloPainelLogin">Iniciar Sessão</h2>
-
+    <video id="video-background" autoplay muted loop>
+        <source src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4" type="video/mp4">
+        </video>
     <!-- Criação da classe formulário do login e direcionada para "action=''""-->
     <form class="formulario_do_login" action="#">
+
+        <label id="TituloPainelLogin" for="formulario_do_login">Iniciar Sessão</label>
     <!-- Label do username -->
         <label for="username">Nome de Utilizador:</label>
     <!-- Tipo texto, com id, nome e com required (tem de ser preenchida para avançar) -->

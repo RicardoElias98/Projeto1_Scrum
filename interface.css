@@ -1,7 +1,11 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex; /* cria um layout flexível  */
+    align-items: center; /* alinha verticalmente */
+    justify-content: center; /* alinha horizontalmente */
+}
 
-/*body{
-    background-image: url("Imagens/Fundo2.jpeg");
-}*/
 
 /* Estilo do "painel do login" */
 .formulario_do_login {
@@ -39,9 +43,10 @@
     padding: 10px 20px;
     border: none; /* remove a borda */
     border-radius: 8px; 
-    cursor: pointer; /* o curso tranforma-se numa mão */
+    cursor: pointer; /* o cursor tranforma-se numa mão */
     box-shadow: 0 0 10px gray;
 }
+
 
 #checkPassword {
     display: flex;
@@ -49,20 +54,47 @@
 }
 
 #checkPassword input{
-    margin-right: 0px;
-    width: 10%;
+    margin-right: 0px; /* tira a margem direita */
+    width: 10%; /* altera a largura inicial para os inputs para 10%  */
+
 }
    
 
 #checkPassword label {
-   white-space: nowrap;
-   margin-left: 0px;
-   margin-bottom: 10px;
+   white-space: nowrap; /* impede que o texto seja "partido" */
+
+   margin-left: 0px; /* tira a margem esquerda */
+
+   margin-bottom: 10px; /* sobe o label para alinhar */
+
 }
 
 #TituloPainelLogin {
     text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px; 
+    color: black; 
+    text-transform: uppercase; 
+    font-weight: bolder; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 2px gray; /* Sombra do texto */
 }
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1;
+}
+
+
+
+
+
+
 
 
 
