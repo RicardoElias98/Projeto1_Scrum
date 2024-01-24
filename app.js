@@ -10,7 +10,7 @@ function PausarVideo() {
     }
 }
 
-/* Função para ver a password */
+/* Função para ver a password através da checkbox */
 function VerPassword() {
     var passwordInput = document.getElementById("password");
     var verPasswordCheckbox = document.getElementById("verPasswordCheckbox");
@@ -21,4 +21,6 @@ function VerPassword() {
         passwordInput.type = "password";
     }
 }
+
+
 

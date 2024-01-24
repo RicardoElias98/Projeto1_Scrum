@@ -112,11 +112,68 @@ body, html {
     z-index: -1;
 }
 
+#quadro {
+    width: 1000px; /* largura */
+    height: 85%;
+    margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
+    background-color: rgba(255, 0, 0, 0); /* fundo transparente*/
+    padding: 20px; /* espaçamento interno */
+    border-radius: 8px; /*  arredonda os cantos */
+    box-shadow: 0 0 10px black;
+    text-align: center;
+}
 
+header, main, footer {
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0);
+}
 
+header {
+    padding: 3px;
+    height: 5%; /* Definir altura do header como 10% do #quadro */
+    width: 100%; /* Ocupa a largura total do #quadro */
+    text-align: center;
+}
 
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    height: 85%; /* Definir altura do header como 10% do #quadro */
+    width: 100%; /* Ocupa a largura total do #quadro */
+    
+}
 
+footer {
+    padding: 3px;
+    height: 5%; /* Definir altura do header como 10% do #quadro */
+    width: 100%; /* Ocupa a largura total do #quadro */
+}
 
+.coluna {
+    width: 30%; /* Ajuste a largura conforme necessário */
+    float: left;
+    margin: 10px;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
 
+.tarefa {
+    background-color: wheat;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-
+h2{
+    font-size: 24px; 
+    color: black; 
+    text-transform: uppercase; 
+    font-weight: bolder; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, yellow, orange);
+    border-radius: 8px;
+}
