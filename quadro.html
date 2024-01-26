@@ -12,7 +12,7 @@
 
         <div id="quadro">
             <header>
-                <button type="button" id="botaoTarefa"> Adicionar tarefa </button>
+                <button type="button" id="botaoTarefa" onclick="criarTarefa()"> Adicionar tarefa </button>
                 <label for="nomeUtilizador" id="labelNomeUtilizador">Nome de Utilizador</label>
                 <input type="text" id="nomeUtilizador" name="Nome de Utilizador" onkeypress="updateLabel(event)" maxlength="25">  
                 <label id="nomeAaparecerNoEcra"> nome_no_ecrã</label>
@@ -51,6 +51,35 @@
                     <div class="tarefa"> <button type="button" class="botaoesq"> &larr; </button> Tarefa 5</div>
                     <div class="tarefa">Tarefa 6</div>
                 </div>
+                <div>
+                    <!-- Botão para abrir o modal -->
+                    
+                
+                    <!-- Modal -->
+                    <div id="addTaskModal" class="formulario_do_modal">
+                      <h2 class="#">Adicionar Tarefa</h2>
+                      <form onsubmit="addTaskModal(); return false;">
+                        <label for="addTaskName">Nome da Tarefa:</label>
+                        <!--required evita que o campo fique vazio-->
+                        <input type="text" id="addTaskName" required />
+                        <br />
+                        <label for="addTaskDescription">Descrição:</label>
+                        <!--textarea para preencher o campo de inicio-->
+                        <textarea type="text" id="taskNameDescription" required></textarea>
+                        <br />
+                        <button type="submit" class="#">Adicionar</button>
+                      </form>
+                      <button
+                        onclick="closeAddTaskModal()"
+                        class="close-button"
+                        id="close-button-color"
+                      >
+                        X
+                      </button>
+                    </div>
+                    <!-- Fundo escuro no painel anterior -->
+                    <div class="modal-background" onclick="closeModal()"></div>
+                  </div>
             </main>
         
             <!-- Tutorial de todas as funcionalidades do Scrum Board -->

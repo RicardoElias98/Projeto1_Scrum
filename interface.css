@@ -269,5 +269,27 @@ h2{
     vertical-align: middle; /* Alinha verticalmente o emoji e texto */
 }
 
+.formulario_do_modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    z-index: 1000; /* Garante que o modal apareça sobre o conteúdo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
+}
+
 
 

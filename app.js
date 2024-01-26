@@ -55,7 +55,7 @@ function updateLabel(event) {
   var contador = 1;
 
   function criarTarefa() {
-    
+    openAddTaskModal();
     const tarefa1 = {
         nome: "Revisão" + contador,
         descricao: "fazer até dia 29!"
@@ -69,11 +69,28 @@ function updateLabel(event) {
   document.getElementById("botaoTarefa").onclick = criarTarefa;
 
    
+// Funções do modal, janela que aparece quando clicamos no botão "Adicionar tarefa"
+// Função para abrir o modal
+function openAddTaskModal() {
+  document.getElementById("addTaskModal").style.display = "block";
+  document.querySelector(".modal-background").style.display = "block";
+}
 
- 
-  
+// Função para fechar o modal
+function closeAddTaskModal() {
+  document.getElementById("addTaskModal").style.display = "none";
+  document.querySelector(".modal-background").style.display = "none";
+}
 
+// Função para adicionar tarefa
+function addTaskModal() {
+  var taskName = document.getElementById("addTaskName").value;
+  var taskDescription = document.getElementById("addTaskDescription").value;
 
+  // Aqui você pode fazer algo com os dados da tarefa, como adicioná-los a uma lista, armazená-los em um banco de dados, etc.
+  console.log("Nome da Tarefa:", taskName);
+  console.log("Descrição:", taskDescription);
 
-
-
+  // Fechar o modal após adicionar a tarefa
+  closeModal();
+}
