@@ -1,0 +1,70 @@
+<!-- FILEPATH: /Users/ricardocarvalho/IdeaProjects/DEI - AoR/Semestre2/Projeto1/Projeto1_Scrum/Ficheiros/dragg.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scrum</title>
+<style>
+  .column {
+      display: inline-block;
+      vertical-align: top;
+      width: 200px;
+      padding: 10px;
+      border: 5px solid #c9c9c9;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+  }
+
+  .task {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: move;
+  }
+  .block-container{
+      display: block;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 90% 10% 10%;
+      gap: 10px;
+  }
+</style>
+
+<!-- BEGIN: HTML -->
+<div class="block-container">
+  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h3>To Do</h3>
+    
+  <div class="task" id="task1" draggable="true" ondragstart="drag(event)" >Task 1</div>
+  <div class="task" id="task2" draggable="true" ondragstart="drag(event)">Task 2</div>
+  <div class="task" id="task3" draggable="true" ondragstart="drag(event)">Task 3</div>
+  <div class="task" id="task4" draggable="true" ondragstart="drag(event)">Task 4</div>
+  </div>
+  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <h3>In Progress</h3>
+  
+  </div>
+  <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h3>Done</h3>
+
+  </div>
+</div>
+  </body>
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+    
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+    }
+  </script>
+</html>
