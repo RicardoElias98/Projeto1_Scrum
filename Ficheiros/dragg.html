@@ -24,7 +24,7 @@
       background-color: #fff;
       cursor: move;
   }
-  .block-container{
+  .container{
       display: block;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 90% 10% 10%;
@@ -33,7 +33,7 @@
 </style>
 
 <!-- BEGIN: HTML -->
-<div class="block-container">
+<div class="container">
   <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
     <h3>To Do</h3>
     
@@ -59,6 +59,7 @@
     
     function drag(ev) {
       ev.dataTransfer.setData("text", ev.target.id);
+      preventDefault();
     }
     
     function drop(ev) {
