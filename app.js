@@ -110,6 +110,7 @@ function Task(name, description) {
   this.description = description;
   this.id = "task" + id++;
   tasks.push(this);
+  this.status = "ToDo";
 }
 
 function addTaskToTable(task) {
