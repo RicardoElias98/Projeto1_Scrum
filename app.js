@@ -121,10 +121,23 @@ function addTaskToTable(task) {
   newTaskElement.className = "tarefa";
   newTaskElement.textContent = task.name;
   newTaskElement.id = task.id;
+  newTaskElement.draggable = true;
 
+  // Add event listeners for drag and drop functionality
+  newTaskElement.addEventListener("dragstart", () => {
+    newTaskElement.classList.add("dragging");
+  });
+
+  newTaskElement.addEventListener("dragend", () => {
+    newTaskElement.classList.remove("dragging");
+  });
   // Append the task element to the ToDo column
   todoColumn.appendChild(newTaskElement);
-
+  todoColumn.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const draggable = document.querySelector(".dragging");
+    todoColumn.appendChild(draggable);
+  });
   // Add the task to the tasks array
   tasks.push(task);
 }
@@ -143,3 +156,14 @@ function removeTask(taskId) {
     console.log("Task element not found");
   }
 }
+
+
+const containers = document.querySelectorAll(".coluna");
+
+containers.forEach((container) => {
+  container.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const draggable = document.querySelector(".dragging");
+    container.appendChild(draggable);
+  });
+});
