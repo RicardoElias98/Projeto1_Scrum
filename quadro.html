@@ -20,36 +20,23 @@
         
             <main>
                 <div class="coluna" id="ToDo">
-                    <h2>To do</h2>
+                    <h2>To do</h2> <!-- 
                     <div class="tarefa" id="tarefa1">Tarefa 1 <button type="button" class="botao" onclick="mudarDeColunaDeToDoParaDoing()"> &rarr; </button></div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa </div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-                    <div class="tarefa">Tarefa 2</div>
-
-                    
+-->
                 </div>
         
                 <div class="coluna" id="doing">
                     <h2>Doing</h2>
-                    <div class="tarefa">
+                    <!--<div class="tarefa">
                          <button type="button" class="botaoesq" onclick="mudarDeColunaDeDoingParaToDo()"> &larr; </button> 
                          Tarefa 3
                          <button type="button" class="botao"> &rarr; </button>
                         </div>
-                    <div class="tarefa">Tarefa 4</div> 
+                        -->
                 </div>
         
                 <div class="coluna">
                     <h2>Done</h2>
-                    <div class="tarefa"> <button type="button" class="botaoesq"> &larr; </button> Tarefa 5</div>
-                    <div class="tarefa">Tarefa 6</div>
                 </div>
                 <div>
                     <!-- Botão para abrir o modal -->
@@ -57,29 +44,23 @@
                 
                     <!-- Modal -->
                     <div id="addTaskModal" class="formulario_do_modal">
-                      <h2 class="#">Adicionar Tarefa</h2>
-                      <form onsubmit="addTaskModal(); return false;">
-                        <label for="addTaskName">Nome da Tarefa:</label>
-                        <!--required evita que o campo fique vazio-->
-                        <input type="text" id="addTaskName" required />
-                        <br />
-                        <label for="addTaskDescription">Descrição:</label>
-                        <!--textarea para preencher o campo de inicio-->
-                        <textarea type="text" id="taskNameDescription" required></textarea>
-                        <br />
-                        <button type="submit" class="#">Adicionar</button>
-                      </form>
-                      <button
-                        onclick="closeAddTaskModal()"
-                        class="close-button"
-                        id="close-button-color"
-                      >
-                        X
-                      </button>
-                    </div>
-                    <!-- Fundo escuro no painel anterior -->
-                    <div class="modal-background" onclick="closeModal()"></div>
-                  </div>
+                        <h2 class="#">Adicionar Tarefa</h2>
+                        <form onsubmit="addTaskModal(); return false;">
+                          <label for="addTaskName">Nome da Tarefa:</label>
+                          <input type="text" id="addTaskName" required />
+                          <br />
+                          <label for="addTaskDescription">Descrição:</label>
+                          <!-- Fix the ID to match the JavaScript code -->
+                          <textarea type="text" id="addTaskDescription" required></textarea>
+                          <br />
+                          <button type="submit" class="#" onclick="addTaskModal(event)">Adicionar</button>
+                        </form>
+                        <button onclick="closeAddTaskModal()" class="close-button" id="close-button-color">X</button>
+                      </div>
+                      
+                      <!-- Fundo escuro no painel anterior -->
+                      <div class="modal-background" onclick="closeAddTaskModal()"></div>
+                      
             </main>
         
             <!-- Tutorial de todas as funcionalidades do Scrum Board -->

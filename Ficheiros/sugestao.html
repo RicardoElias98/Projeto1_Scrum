@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containers Example</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      #top-container {
+        width: 100%;
+        height: 100%;
+        height: 2rem;
+        background-color: #329f89;
+      }
+
+      #bottom-containers {
+        display: flex;
+        background-color: rgb(12, 10, 10);
+        flex-direction: column;
+      }
+
+      .vertical-container {
+        flex: 1;
+        height: 700px;
+        border: 1px solid #502e2e;
+        box-sizing: border-box;
+        margin: 1rem;
+        background-color: rgb(160, 136, 136);
+
+      }
+      .title {
+        text-align: center;
+        display: block;
+        background-color: rgb(73, 177, 177);
+      }
+      .btn-container {
+        display: flex;
+        justify-content: left;
+        flex-basis: 100%;        
+        width: 100%;
+        background-color: rgb(38, 38, 145);
+      }
+      .center-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: rgb(210, 210, 92);
+      }
+      footer{
+        display: block;
+        height: 100%;
+        background-color: rgb(177, 73, 172);
+        text-align: center;
+      }
+      .task.draggable{
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 5px 5px 5px #414141;
+        cursor: move;
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+      .status{
+        flex:1;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: rgb(255, 0, 0);
+      }
+      .btn{
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 5px;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="top-container">
+        <!-- informação user -->
+      </div>
+
+      <div id="bottom-containers">
+        <div class="title">
+          <h1>Quadro Scrum</h1>
+        </div>
+        <div class="btn-container">
+          <button class="btn">+</button></div>
+          
+        <div class="center-container">
+          <div class="vertical-container">
+            <div> <div class="status">TO DO</div> 
+            <div class="task-container">
+            <div class="task draggable" id="task1" draggable="true" ondragstart="drag(event)">Task 1</div>
+            <!-- tarefas -->
+        </div>
+        </div>
+          </div>
+          <div class="vertical-container">
+            <div> <div class="status">DOING</div>
+            <div class="task-container">
+        </div>
+        </div>
+        </div>
+          <div class="vertical-container">
+            <div> <div class="status">DONE</div>
+            <div class="task-container">
+            <!-- tarefas -->
+        </div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <footer>Sobre nós</footer>
+  </body>
+</html>
