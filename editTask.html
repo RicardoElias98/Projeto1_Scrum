@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-content: flex-start;
+        height: 500px;
+        width: 400px;
+        background-color: red;
+      }
+      .container-main.main-top {
+        display: flex;
+        position: relative;
+        text-align: center;
+        height: 40px;
+        width: 100%;
+        background-color: blue;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .prop {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        align-items: flex-start;
+        margin: auto;
+      }
+      #addTaskName, #addTaskDescription{
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-main">
+      <div class="container-main main-top title">Editar Tarefa</div>
+
+      <div class="prop">
+        <label for="addTaskName">Nome da Tarefa:</label>
+        <input type="text" id="addTaskName" required />
+        <br />
+            <label for="addTaskDescription">Descrição:</label>
+            <!-- Fix the ID to match the JavaScript code -->
+            <textarea type="text" id="addTaskDescription" required></textarea>
+            <br />
+            <button type="submit" class="#" onclick="addTaskModal(event)">Adicionar</button>
+            </form>
+            <button onclick="closeAddTaskModal()" class="close-button" id="close-button-color">X</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

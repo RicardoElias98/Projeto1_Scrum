@@ -1,295 +1,287 @@
-body, html {
-    height: 100vh;  /* "viewport height" - ocupa sempre a altura toda da janela mesmo que redimensiodada */
-    margin: 0;
-    display: flex; /* cria um layout flexível  */
-    align-items: center; /* alinha verticalmente */
-    justify-content: center; /* alinha horizontal */
-    width: 100%;
+body,
+html {
+  height: 100vh; /* "viewport height" - ocupa sempre a altura toda da janela mesmo que redimensiodada */
+  margin: 0;
+  display: flex; /* cria um layout flexível  */
+  align-items: center; /* alinha verticalmente */
+  justify-content: center; /* alinha horizontal */
+  width: 100%;
 }
-
 
 /* Estilo do "painel do login" */
 .formulario_do_login {
-    width: 300px; /* largura */
-    margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
-    background-color: white;
-    padding: 20px; /* espaçamento interno */
-    border-radius: 8px; /*  arredonda os cantos */
-    box-shadow: 0 0 10px black;
-    text-align: center;
+  width: 300px; /* largura */
+  margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
+  background-color: white;
+  padding: 20px; /* espaçamento interno */
+  border-radius: 8px; /*  arredonda os cantos */
+  box-shadow: 0 0 10px black;
+  text-align: center;
 }
 
 /* Estilo dos labels "nome de utilizador e palavra-passe*/
 .formulario_do_login label {
-    display: block; /* cada label fica numa linha diferente */
-    text-align: left;
-    margin-bottom: 5px; 
-    border-radius: 8px; /* adiciona uma margem na parte inferior */
+  display: block; /* cada label fica numa linha diferente */
+  text-align: left;
+  margin-bottom: 5px;
+  border-radius: 8px; /* adiciona uma margem na parte inferior */
 }
 
 /* Estilo das boxs para inserir os dados */
 .formulario_do_login input {
-    width: 100%; /* ocupa toda a largura do  */
-    padding: 10px; /* espaçamento interno */
-    margin-bottom: 15px; 
-    box-sizing: border-box;
-    border-style: solid;
-    border-radius: 8px; /* garante que o padding não altere a largura total */
+  width: 100%; /* ocupa toda a largura do  */
+  padding: 10px; /* espaçamento interno */
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-radius: 8px; /* garante que o padding não altere a largura total */
 }
 
 /* Estilo do botão de confirmar o login */
 .formulario_do_login button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border: none; /* remove a borda */
-    border-radius: 8px; 
-    cursor: pointer; /* o cursor tranforma-se numa mão */
-    box-shadow: 0 0 10px gray;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none; /* remove a borda */
+  border-radius: 8px;
+  cursor: pointer; /* o cursor tranforma-se numa mão */
+  box-shadow: 0 0 10px gray;
 }
-
 
 #checkPassword {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-#checkPassword input{
-    margin-right: 0px; /* tira a margem direita */
-    width: 10%; /* altera a largura inicial para os inputs para 10%  */
-
+#checkPassword input {
+  margin-right: 0px; /* tira a margem direita */
+  width: 10%; /* altera a largura inicial para os inputs para 10%  */
 }
-   
 
 #checkPassword label {
-   white-space: nowrap; /* impede que o texto seja "partido" */
+  white-space: nowrap; /* impede que o texto seja "partido" */
 
-   margin-left: 0px; /* tira a margem esquerda */
+  margin-left: 0px; /* tira a margem esquerda */
 
-   margin-bottom: 10px; /* sobe o label para alinhar */
-
+  margin-bottom: 10px; /* sobe o label para alinhar */
 }
 
 #pausarVideo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-#pausarVideo input{
-    margin-right: 0px; /* tira a margem direita */
-    width: 10%; /* altera a largura inicial para os inputs para 10%  */
-
+#pausarVideo input {
+  margin-right: 0px; /* tira a margem direita */
+  width: 10%; /* altera a largura inicial para os inputs para 10%  */
 }
-   
 
 #pausarVideo label {
-   white-space: nowrap; /* impede que o texto seja "partido" */
+  white-space: nowrap; /* impede que o texto seja "partido" */
 
-   margin-left: 0px; /* tira a margem esquerda */
+  margin-left: 0px; /* tira a margem esquerda */
 
-   margin-bottom: 10px; /* sobe o label para alinhar */
-
+  margin-bottom: 10px; /* sobe o label para alinhar */
 }
 
-
 #TituloPainelLogin {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px; 
-    color: black; 
-    text-transform: uppercase; 
-    font-weight: bolder; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: 2px 2px 2px gray; /* Sombra do texto */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 2px 2px 2px gray; /* Sombra do texto */
 }
 
 #video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 #quadro {
-    width: 1000px; /* largura */
-    height: 85%;
-    margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
-    background-color: rgba(255, 0, 0, 0); /* fundo transparente*/
-    padding: 20px; /* espaçamento interno */
-    border-radius: 8px; /*  arredonda os cantos */
-    box-shadow: 0 0 10px black;
-    text-align: center;
+  width: 1000px; /* largura */
+  height: 85%;
+  margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
+  background-color: rgba(255, 0, 0, 0); /* fundo transparente*/
+  padding: 20px; /* espaçamento interno */
+  border-radius: 8px; /*  arredonda os cantos */
+  box-shadow: 0 0 10px black;
+  text-align: center;
 }
 
-header, main, footer {
-    text-align: center;
-    background-color: rgba(255, 0, 0, 0);
+header,
+main,
+footer {
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0);
 }
 
 header {
-    height: 5%; /* Definir altura do header como 10% do #quadro */
-    width: 100%; /* Ocupa a largura total do #quadro */
-    text-align: center;
+  height: 5%; /* Definir altura do header como 10% do #quadro */
+  width: 100%; /* Ocupa a largura total do #quadro */
+  text-align: center;
 }
 
 main {
-    display: flex;
-    justify-content: space-between;
-    padding: 3px;
-    height: 85%; /* Definir altura do header como 10% do #quadro */
-    width: 100%; /* Ocupa a largura total do #quadro */
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  height: 85%; /* Definir altura do header como 10% do #quadro */
+  width: 100%; /* Ocupa a largura total do #quadro */
 }
 
 footer {
-    padding: 3px;
-    height: 5%; /* Definir altura do header como 10% do #quadro */
-    width: 100%; /* Ocupa a largura total do #quadro */
+  padding: 3px;
+  height: 5%; /* Definir altura do header como 10% do #quadro */
+  width: 100%; /* Ocupa a largura total do #quadro */
 }
 
 .coluna {
-    width: 30%; /* Ajuste a largura conforme necessário */
-    float: left;
-    margin: 10px;
-    background-color: rgba(255, 0, 0, 0);
-    padding: 10px;
-    box-sizing: border-box;
-    overflow-y: scroll;
+  width: 30%; /* Ajuste a largura conforme necessário */
+  float: left;
+  margin: 10px;
+  background-color: rgba(255, 0, 0, 0);
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 .coluna::-webkit-scrollbar {
-    width: 12px; /* ou a largura desejada */
-    
+  width: 12px; /* ou a largura desejada */
 }
 
 .coluna::-webkit-scrollbar-thumb {
-    background-color: rgba(128, 128, 128, 0.4); 
-    border-radius: 8px;
+  background-color: rgba(128, 128, 128, 0.4);
+  border-radius: 8px;
 }
 
-.coluna::-webkit-scrollbar-thumb:hover{
-    background-color: rgba(128, 128, 128, 1); 
+.coluna::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(128, 128, 128, 1);
 }
 
 .tarefa {
-    background-color: wheat;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 4px;
-    cursor: pointer;
-    align-items: center;
+  background-color: wheat;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
 }
 
 .botao {
-    background: linear-gradient(45deg, yellow, orange);
-    border-radius: 8px;
-    float: right;
-    margin-left: -40px;
-    visibility: hidden;
+  background: linear-gradient(45deg, yellow, orange);
+  border-radius: 8px;
+  float: right;
+  margin-left: -40px;
+  visibility: hidden;
 }
 
 .botaoesq {
-    background: linear-gradient(45deg, yellow, orange);
-    border-radius: 8px;
-    float: left;
-    margin-right: -40px;
-    visibility: hidden;
+  background: linear-gradient(45deg, yellow, orange);
+  border-radius: 8px;
+  float: left;
+  margin-right: -40px;
+  visibility: hidden;
 }
 
 .tarefa:hover .botao {
-    visibility: visible;
-  }
+  visibility: visible;
+}
 
 .tarefa:hover .botaoesq {
-    visibility: visible;
-  }
+  visibility: visible;
+}
 
 .tarefa:hover {
-    font-weight: bolder; 
-    font-size: 24px; 
+  font-weight: bolder;
+  font-size: 24px;
 }
 
-
-h2{
-    font-size: 24px; 
-    color: black; 
-    text-transform: uppercase; 
-    font-weight: bolder; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(45deg, yellow, orange);
-    border-radius: 8px;
+h2 {
+  font-size: 24px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, yellow, orange);
+  border-radius: 8px;
 }
-
 
 #labelNomeUtilizador {
-    font-size: 14px; 
-    color: black; 
-    font-weight: bolder; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(45deg, yellow, orange);
-    padding: 1px;
-    border: 2px solid black;
+  font-size: 14px;
+  color: black;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, yellow, orange);
+  padding: 1px;
+  border: 2px solid black;
 }
 
-#nomeUtilizador{
-    opacity: 0.4;
+#nomeUtilizador {
+  opacity: 0.4;
 }
 
 #nomeUtilizador:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 #botaoTarefa {
-    font-size: 14px; 
-    color: black; 
-    font-weight: bolder; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(45deg, yellow, orange);
-    float: left;
+  font-size: 14px;
+  color: black;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, yellow, orange);
+  float: left;
 }
 
 #nomeAaparecerNoEcra {
-    font-size: 14px; 
-    color: black; 
-    font-weight: bolder; 
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(45deg, yellow, orange);
-    padding: 2px;
-    border: 2px solid black;
-    float: right; 
+  font-size: 14px;
+  color: black;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, yellow, orange);
+  padding: 2px;
+  border: 2px solid black;
+  float: right;
 }
 
 #nomeAaparecerNoEcra::before {
-    content: '\1F4BB'; /* Código Unicode para o em
+  content: "\1F4BB"; /* Código Unicode para o em
     oji do computador */
-    margin-right: 8px; /* Espaçamento entre o emoji e o texto */
-    font-size: 18px; /* Tamanho do emojji */
-    vertical-align: middle; /* Alinha verticalmente o emoji e texto */
+  margin-right: 8px; /* Espaçamento entre o emoji e o texto */
+  font-size: 18px; /* Tamanho do emojji */
+  vertical-align: middle; /* Alinha verticalmente o emoji e texto */
 }
 
 .formulario_do_modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: white;
-    z-index: 1000; /* Garante que o modal apareça sobre o conteúdo */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  z-index: 1000; /* Garante que o modal apareça sobre o conteúdo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .modal-background {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
 }
-
-
-
+.draggable.dragging {
+  cursor: move;
+  
+}
