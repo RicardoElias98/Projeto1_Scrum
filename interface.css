@@ -281,3 +281,7 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
 }
+.draggable.dragging {
+  cursor: move;
+  
+}
