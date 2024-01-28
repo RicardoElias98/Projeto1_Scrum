@@ -51,21 +51,6 @@ function updateLabel(event) {
     colunaAreceber.appendChild(tarefaAenviar);
   }
 
-  /* Criação de objetos - tarefas  - TESTE!!!!! */
-  var contador = 1;
-
-  function criarTarefa() {
-    openAddTaskModal();
-    const tarefa1 = {
-        nome: "Revisão" + contador,
-        descricao: "fazer até dia 29!"
-     }
-     localStorage.setItem("task", tarefa1.nome);
-     console.log("rkekleerk");
-     contador++;
-     localStorage.setItem("contador",contador);
-}
-
   document.getElementById("botaoTarefa").onclick = criarTarefa;
 
    
@@ -85,12 +70,32 @@ function closeAddTaskModal() {
 // Função para adicionar tarefa
 function addTaskModal() {
   var taskName = document.getElementById("addTaskName").value;
-  var taskDescription = document.getElementById("addTaskDescription").value;
+  var taskDescription = document.getElementById("taskNameDescription").value;
 
   // Aqui você pode fazer algo com os dados da tarefa, como adicioná-los a uma lista, armazená-los em um banco de dados, etc.
   console.log("Nome da Tarefa:", taskName);
   console.log("Descrição:", taskDescription);
 
+  var taskNova = {
+    name: taskName,
+    description: taskDescription
+  };
+
+  criarTarefa(taskNova);
+
   // Fechar o modal após adicionar a tarefa
-  closeModal();
+  closeAddTaskModal();
 }
+
+/* Criação de objetos - tarefas  - TESTE!!!!! */
+var contador = 1;
+
+function criarTarefa(taskNova) {
+   openAddTaskModal();
+  
+   localStorage.setItem("task", taskNova);
+   console.log("rkekleerk");
+   contador++;
+   localStorage.setItem("contador",contador);
+}
+
