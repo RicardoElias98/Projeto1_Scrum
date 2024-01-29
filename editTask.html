@@ -8,11 +8,11 @@
       .container-main {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        justify-content: flex-start;
+        justify-content: center; /*editar tarefa centrado v.*/
         height: 500px;
         width: 400px;
         background-color: red;
+        margin: auto;
       }
       .container-main.main-top {
         display: flex;
@@ -30,11 +30,22 @@
         flex-direction: column;
         width: 50%;
         height: 100%;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         margin: auto;
       }
-      #addTaskName, #addTaskDescription{
+      #taskName,
+      #taskDescription {
         width: 100%;
+        width: 300px;
+        resize: none;
+      }
+      #taskDescription {
+        height: 300px;
+      }
+      .title {
+        font-size: 20px;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -43,18 +54,43 @@
       <div class="container-main main-top title">Editar Tarefa</div>
 
       <div class="prop">
-        <label for="addTaskName">Nome da Tarefa:</label>
-        <input type="text" id="addTaskName" required />
+        <label class="taskName">Nome da Tarefa:</label>
+        <input type="text" id="taskName" required />
         <br />
-            <label for="addTaskDescription">Descrição:</label>
-            <!-- Fix the ID to match the JavaScript code -->
-            <textarea type="text" id="addTaskDescription" required></textarea>
-            <br />
-            <button type="submit" class="#" onclick="addTaskModal(event)">Adicionar</button>
-            </form>
-            <button onclick="closeAddTaskModal()" class="close-button" id="close-button-color">X</button>
-        </div>
+        <label id="addTaskDescription">Descrição:</label>
+        <!-- Fix the ID to match the JavaScript code -->
+        <textarea id="taskDescription" required></textarea>
+        <br />
+        <button class="#" onclick="backToHome()">Gravar</button>
+        <button
+          onclick="backToHome()"
+          class="close-button"
+          id="close-button-color"
+        >
+          X
+        </button>
       </div>
     </div>
+    <script>
+      // Retrieve data from local storage
+      const taskId = localStorage.getItem("taskId");
+      const taskName = localStorage.getItem("taskName");
+      const taskDescription = localStorage.getItem("taskDescription");
+
+      console.log(taskId);
+      console.log(taskName);
+      console.log(taskDescription);
+      // Use the data as needed in your JavaScript code
+      // Set text content in your HTML elements
+      document.getElementById(
+        "taskIdElement"
+      ).textContent = `Task ID: ${taskId}`;
+      document.getElementById(
+        "taskName"
+      ).textContent = `Task Name: ${taskName}`;
+      document.getElementById(
+        "taskDescription"
+      ).textContent = `Task Description: ${taskDescription}`;
+    </script>
   </body>
 </html>

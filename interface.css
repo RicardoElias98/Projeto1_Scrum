@@ -232,7 +232,7 @@ h2 {
   opacity: 1;
 }
 
-#botaoTarefa {
+#createTask {
   font-size: 14px;
   color: black;
   font-weight: bolder;
@@ -283,5 +283,4 @@ h2 {
 }
 .draggable.dragging {
   cursor: move;
-  
 }

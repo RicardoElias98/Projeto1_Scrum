@@ -69,8 +69,12 @@ function criarTarefa() {
   contador++;
   localStorage.setItem("contador", contador);
 }
-
-document.getElementById("botaoTarefa").onclick = criarTarefa;
+// Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
+// A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
+let createTaskButton = document.getElementById("createTask");
+if (createTaskButton) {
+  createTaskButton.onclick = criarTarefa;
+}
 
 // Funções do modal, janela que aparece quando clicamos no botão "Adicionar tarefa"
 // Função para abrir o modal
@@ -91,7 +95,7 @@ function addTaskModal(event) {
   var taskName = document.getElementById("addTaskName").value;
   var taskDescription = document.getElementById("addTaskDescription").value;
   let task = new Task(taskName, taskDescription);
-  // Aqui você pode fazer algo com os dados da tarefa, como adicioná-los a uma lista, armazená-los em um banco de dados, etc.
+  // See the attributes of the task object in the console
   console.log("Nome da Tarefa:", taskName);
   console.log("Descrição:", taskDescription);
   console.log("ID:", task.id);
@@ -104,6 +108,7 @@ function addTaskModal(event) {
 // Operacoes com tarefas
 let tasks = [];
 let id = 0;
+//With function or class?
 //Construtor das tarefas
 function Task(name, description) {
   this.name = name;
@@ -123,11 +128,11 @@ function addTaskToTable(task) {
   newTaskElement.id = task.id;
   newTaskElement.draggable = true;
 
-  // Add event listeners for drag and drop functionality
+  // Add event listeners for drag and drop functionality to use CSS
+  // to style the task element when it is being dragged
   newTaskElement.addEventListener("dragstart", () => {
     newTaskElement.classList.add("dragging");
   });
-
   newTaskElement.addEventListener("dragend", () => {
     newTaskElement.classList.remove("dragging");
   });
@@ -137,6 +142,13 @@ function addTaskToTable(task) {
     e.preventDefault();
     const draggable = document.querySelector(".dragging");
     todoColumn.appendChild(draggable);
+    task.status = "ToDo";
+  });
+  // Navigate to the URL when the task element is clicked (Edit)
+  document.querySelector(".tarefa").addEventListener("click", (e) => {
+    const clickedId = e.target.id; // Get the ID of the clicked task
+    // Redirect to the editTask.html page
+    window.location.href = "./editTask.html";
   });
   // Add the task to the tasks array
   tasks.push(task);
@@ -157,13 +169,35 @@ function removeTask(taskId) {
   }
 }
 
-
+// Add event listeners for drag and drop functionality to all columns
 const containers = document.querySelectorAll(".coluna");
-
 containers.forEach((container) => {
   container.addEventListener("dragover", (e) => {
     e.preventDefault();
-    const draggable = document.querySelector(".dragging");
-    container.appendChild(draggable);
+    const draggable = document.querySelector(".dragging"); // The task we want to drop
+    container.appendChild(draggable); // Drop the task in the column
+    console.log(e.target); // To see the actual task
+    ////////////////////////////////////////
+    let targetTask = e.target;
+    if (targetTask instanceof Task) {
+      console.log(targetTask.name);
+    }
+    ////////////////////////////////////////
   });
+});
+
+function backToHome() {
+  window.location.href = "./quadro.html";
+}
+
+function printAllTasksID() {
+  let taskss = document.tasks;
+}
+
+const btn_login = document.getElementById("btn-login");
+const username = document.getElementById("username");
+btn_login.addEventListener("click", () => {
+  localStorage.setItem("username", username.value);
+  console.log(username.value);
+  localStorage.getItem("username");
 });
