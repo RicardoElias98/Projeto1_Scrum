@@ -88,12 +88,26 @@ function closeAddTaskModal() {
   document.getElementById("addTaskModal").style.display = "none";
   document.querySelector(".modal-background").style.display = "none";
 }
-
+// Operacoes com tarefas
+let tasks = [];
+let tasksDoing = [];
+let tasksDone = [];
+let id = 1;
+//With function or class?
+//Construtor das tarefas
+function Task(name, description) {
+  this.name = name;
+  this.description = description;
+  this.id = "task" + id++;
+  this.status = "ToDo";
+}
 // Função para adicionar tarefa
 function addTaskModal(event) {
   event.preventDefault();
+  // Get the values from the form
   var taskName = document.getElementById("addTaskName").value;
   var taskDescription = document.getElementById("addTaskDescription").value;
+  // Create a new task object
   let task = new Task(taskName, taskDescription);
   // See the attributes of the task object in the console
   console.log("Nome da Tarefa:", taskName);
@@ -103,19 +117,6 @@ function addTaskModal(event) {
   addTaskToTable(task);
   // Fechar o modal após adicionar a tarefa
   closeAddTaskModal();
-}
-
-// Operacoes com tarefas
-let tasks = [];
-let id = 0;
-//With function or class?
-//Construtor das tarefas
-function Task(name, description) {
-  this.name = name;
-  this.description = description;
-  this.id = "task" + id++;
-  tasks.push(this);
-  this.status = "ToDo";
 }
 
 function addTaskToTable(task) {
@@ -141,8 +142,6 @@ function addTaskToTable(task) {
   todoColumn.addEventListener("dragover", (e) => {
     e.preventDefault();
     const draggable = document.querySelector(".dragging");
-    todoColumn.appendChild(draggable);
-    task.status = "ToDo";
   });
   // Navigate to the URL when the task element is clicked (Edit)
   document.querySelector(".tarefa").addEventListener("click", (e) => {
@@ -176,13 +175,50 @@ containers.forEach((container) => {
     e.preventDefault();
     const draggable = document.querySelector(".dragging"); // The task we want to drop
     container.appendChild(draggable); // Drop the task in the column
-    console.log(e.target); // To see the actual task
-    ////////////////////////////////////////
-    let targetTask = e.target;
-    if (targetTask instanceof Task) {
-      console.log(targetTask.name);
+  });
+});
+containers.forEach((container) => {
+  container.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const draggable = document.querySelector(".dragging"); // The task we want to drop
+    container.appendChild(draggable); // Drop the task in the column
+
+    let targetTaskId = draggable.id; // Get the id of the task we're dragging
+
+    // Use the updated arrays when finding the task
+    let targetTask =
+      tasks.find((task) => task.id === targetTaskId) ||
+      tasksDoing.find((task) => task.id === targetTaskId) ||
+      tasksDone.find((task) => task.id === targetTaskId);
+
+      
+    if (targetTask) {
+      let targetCurrentStatus = targetTask.status;
+      console.log(targetCurrentStatus, " --");
+
+      // Remove the task from the array based on the current status
+      if (targetCurrentStatus === "ToDo") {
+        tasks = tasks.filter((task) => task.id !== targetTaskId);
+      } else if (targetCurrentStatus === "doing") {
+        tasksDoing = tasksDoing.filter((task) => task.id !== targetTaskId);
+      } else if (targetCurrentStatus === "done") {
+        tasksDone = tasksDone.filter((task) => task.id !== targetTaskId);
+      }
+      // Update the status of the task based on the id of the container
+      if (container.id === "ToDo") {
+        targetTask.status = "ToDo";
+        tasks.push(targetTask);
+      } else if (container.id === "doing") {
+        targetTask.status = "doing";
+        tasksDoing.push(targetTask);
+      } else if (container.id === "done") {
+        targetTask.status = "done";
+        tasksDone.push(targetTask);
+      }
     }
-    ////////////////////////////////////////
+    console.log(tasks);
+    console.log(tasksDoing);
+    console.log(tasksDone);
   });
 });
 
