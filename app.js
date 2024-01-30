@@ -4,9 +4,8 @@ let tasksDoing = [];
 let tasksDone = [];
 
 window.onload = function () {
-  if (localStorage.getItem("username")) {
-    document.getElementById("nomeAaparecerNoEcra").innerHTML =
-      localStorage.getItem("username");
+  if (localStorage.getItem("usernameGravado")) {
+    document.getElementById("nomeAaparecerNoEcra").innerHTML = localStorage.getItem("usernameGravado");
   }
   if (localStorage.getItem("id")) {
     id = localStorage.getItem("id");
@@ -30,6 +29,11 @@ window.onload = function () {
     });
   }
 };
+
+function GuardarUsername() {
+  let username = document.getElementById("username").value;
+  localStorage.setItem("usernameGravado",username);
+}
 
 /* Função parar pausar o vídeo de fundo através da checkbox  */
 function PausarVideo() {
@@ -108,8 +112,8 @@ function addTaskModal(event) {
 }
 
 function addTaskToTable(task) {
+  
   var column = document.getElementById(task.status);
-
   // Create a new task element
   var newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
