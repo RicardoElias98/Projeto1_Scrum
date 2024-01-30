@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Scrum Board</title>
-    <link rel="stylesheet" href="interface.css">
-</head>
-<body>
+    <link rel="stylesheet" href="interface.css" />
+  </head>
+  <body>
     <video id="video-background" autoplay muted loop>
-        <source src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4" type="video/mp4">
-        </video>
+      <source
+        src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4"
+        type="video/mp4"
+      />
+    </video>
     <!-- Criação da classe formulário do login e direcionada para "action=''""-->
-    <form class="formulario_do_login"">
-    <!-- action="quadro.html -->
-        <label id="TituloPainelLogin" for="formulario_do_login">Iniciar Sessão</label>
-    <!-- Label do username -->
-        <label for="username">Nome de Utilizador:</label>
-    <!-- Tipo texto, com id, nome e com required (tem de ser preenchida para avançar) -->
-        <input type="text" id="username" name="username" required >
-        <br/>
-        <br/>
-    <!-- Label da password -->
-        <label for="password">Palavra-passe:</label>
-    <!-- Tipo password, com id, nome e com required (tem de ser preenchida para avançar) -->
-        <input type="password" id="password" name="password" required>
-        <br/>
-        <br/>
-    <!-- Checkbox com o método em JS para ver a passord -->
-    <div id="checkPassword"> 
-        <input type="checkbox" onclick="VerPassword()" id="verPasswordCheckbox">
+    <form class="formulario_do_login" action="quadro.html">
+      <!-- action="quadro.html -->
+      <label id="TituloPainelLogin" for="formulario_do_login"
+        >Iniciar Sessão</label
+      >
+      <!-- Label do username -->
+      <label for="username">Nome de Utilizador:</label>
+      <!-- Tipo texto, com id, nome e com required (tem de ser preenchida para avançar) -->
+      <input type="text" id="username" name="username" required />
+      <br />
+      <br />
+      <!-- Label da password -->
+      <label for="password">Palavra-passe:</label>
+      <!-- Tipo password, com id, nome e com required (tem de ser preenchida para avançar) -->
+      <input type="password" id="password" name="password" required />
+      <br />
+      <br />
+      <!-- Checkbox com o método em JS para ver a passord -->
+      <div id="checkPassword">
+        <input
+          type="checkbox"
+          onclick="VerPassword()"
+          id="verPasswordCheckbox"
+        />
         <label for="verPasswordCheckbox"> Ver Palavra-passe</label>
-    </div>
+      </div>
 
-    <div id="pausarVideo"> 
-        <input type="checkbox" onclick="PausarVideo()" id="pausarVideoCheckBox">
+      <div id="pausarVideo">
+        <input
+          type="checkbox"
+          onclick="PausarVideo()"
+          id="pausarVideoCheckBox"
+        />
         <label for="pausarVideo"> Pausar Fundo</label>
-    </div>
-        <br/>
-        <br/>
-    <!-- Botão para concluir o login -->
-        <button type="submit">Login</button>
+      </div>
+      <br />
+      <br />
+      <!-- Botão para concluir o login -->
+      <button type="submit">Login</button>
     </form>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
