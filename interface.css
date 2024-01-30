@@ -214,24 +214,6 @@ h2 {
   border-radius: 8px;
 }
 
-#labelNomeUtilizador {
-  font-size: 14px;
-  color: black;
-  font-weight: bolder;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(45deg, yellow, orange);
-  padding: 1px;
-  border: 2px solid black;
-}
-
-#nomeUtilizador {
-  opacity: 0.4;
-}
-
-#nomeUtilizador:hover {
-  opacity: 1;
-}
-
 #createTask {
   font-size: 14px;
   color: black;

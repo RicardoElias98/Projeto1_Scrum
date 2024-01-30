@@ -55,19 +55,6 @@ function VerPassword() {
   }
 }
 
-/* Função após carregar no ENTER */
-function updateLabel(event) {
-  if (event.key == "Enter") {
-    var nomeUtilizadorInput = document.getElementById("nomeUtilizador");
-    var nomeAaparecerNoEcraLabel = document.getElementById(
-      "nomeAaparecerNoEcra"
-    );
-
-    // Atualiza o nome do utilizador
-    nomeAaparecerNoEcraLabel.textContent = nomeUtilizadorInput.value;
-  }
-}
-
 
 function criarTarefa() {
   openAddTaskModal();
@@ -140,10 +127,7 @@ function addTaskToTable(task) {
   });
   // Append the task element to the ToDo column
   column.appendChild(newTaskElement);
-  column.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const draggable = document.querySelector(".dragging");
-  });
+  
   // Navigate to the URL when the task element is clicked (Edit)
   newTaskElement.addEventListener("click", (e) => {
     let clickedId = e.target.id; // Get the ID of the clicked task
@@ -162,22 +146,6 @@ function addTaskToTable(task) {
   }
 }
 
-// Função para remover tarefa
-//! verificar se está a remover a tarefa certa!
-function removeTask(task) {
-  // Remove the task from the tasks array
-  tasks = tasks.filter(function (task) {
-    return task.id !== taskId;
-  });
-  // Remove the task element from the DOM if it exists
-  var taskElement = document.getElementById(taskId);
-  if (taskElement) {
-    taskElement.remove();
-  } else {
-    console.log("Task element not found");
-  }
-  save();
-}
 
 // Add event listeners for drag and drop functionality to all columns
 const containers = document.querySelectorAll(".coluna");
@@ -219,22 +187,18 @@ containers.forEach((container) => {
       if (container.id === "ToDo") {
         targetTask.status = "ToDo";
         tasks.push(targetTask);
-        save();
       } else if (container.id === "doing") {
         targetTask.status = "doing";
         tasksDoing.push(targetTask);
-        save();
       } else if (container.id === "done") {
         targetTask.status = "done";
         tasksDone.push(targetTask);
-        save();
       }
     }
     console.log(tasks);
     console.log(tasksDoing);
     console.log(tasksDone);
     // Save the updated arrays to local storage
-    save();
   });
 });
 // Go to the editTask.html page when a task is clicked
