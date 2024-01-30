@@ -4,6 +4,7 @@ let tasksDoing = [];
 let tasksDone = [];
 
 window.onload = function () {
+  console.log("corri");
   if (localStorage.getItem("usernameGravado")) {
     document.getElementById("nomeAaparecerNoEcra").innerHTML = localStorage.getItem("usernameGravado");
   }
@@ -90,7 +91,7 @@ function closeAddTaskModal() {
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = (id++)+"task";
+  this.id = id++;
   this.status = "ToDo";
 }
 // Função para adicionar tarefa
@@ -111,100 +112,48 @@ function addTaskModal(event) {
   save();
 }
 
+
+
 function addTaskToTable(task) {
   
   var column = document.getElementById(task.status);
   // Create a new task element
   var newTaskElement = document.createElement("div");
+  var newButton = document.createElement('button');
+  newButton.className = "newButton";
+  newButton.innerHTML = '&rarr;';
   newTaskElement.className = "task";
   newTaskElement.textContent = task.name;
   newTaskElement.id = task.id;
-  newTaskElement.draggable = true;
+  tasks.push(task);
+  newTaskElement.appendChild(newButton);
+  newButton.onclick = function (event) {
+    event.stopPropagation();
+    alert("para a coluna DOING");
+    task.status="doing";
+    tasksDoing.push(task);
+    let indiceID = (newTaskElement.id)-1;
+    tasks.splice(indiceID,1)
+    save();
+    
+    
+  }
 
-  // Add event listeners for drag and drop functionality to use CSS
-  // to style the task element when it is being dragged
-  newTaskElement.addEventListener("dragstart", () => {
-    newTaskElement.classList.add("dragging");
-  });
-  newTaskElement.addEventListener("dragend", () => {
-    newTaskElement.classList.remove("dragging");
-  });
-  // Append the task element to the ToDo column
+  
+  
+
   column.appendChild(newTaskElement);
   
   // Navigate to the URL when the task element is clicked (Edit)
   newTaskElement.addEventListener("click", (e) => {
     let clickedId = e.target.id; // Get the ID of the clicked task
-    alert(clickedId);
+    alert("TESTE");
     localStorage.setItem("idAtual",clickedId);
     // Redirect to the editTask.html page
     window.location.href = "./editTask.html";
   });
-  // Add the task to the tasks array
-  if (task.status === "ToDo") {
-    tasks.push(task);
-  } else if (task.status === "doing") {
-    tasksDoing.push(task);
-  } else if (task.status === "done") {
-    tasksDone.push(task);
-  }
 }
 
-
-// Add event listeners for drag and drop functionality to all columns
-const containers = document.querySelectorAll(".coluna");
-containers.forEach((container) => {
-  container.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const draggable = document.querySelector(".dragging"); // The task we want to drop
-    container.appendChild(draggable); // Drop the task in the column
-  });
-});
-containers.forEach((container) => {
-  container.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const draggable = document.querySelector(".dragging"); // The task we want to drop
-    container.appendChild(draggable); // Drop the task in the column
-
-    let targetTaskId = draggable.id; // Get the id of the task we're dragging
-
-    // Use the updated arrays when finding the task
-    let targetTask =
-      tasks.find((task) => task.id === targetTaskId) ||
-      tasksDoing.find((task) => task.id === targetTaskId) ||
-      tasksDone.find((task) => task.id === targetTaskId);
-
-    if (targetTask) {
-      let targetCurrentStatus = targetTask.status;
-      console.log(targetCurrentStatus, " --");
-
-      // Remove the task from the array based on the current status
-
-      if (targetCurrentStatus === "ToDo") {
-        tasks = tasks.filter((task) => task.id !== targetTaskId);
-      } else if (targetCurrentStatus === "doing") {
-        tasksDoing = tasksDoing.filter((task) => task.id !== targetTaskId);
-      } else if (targetCurrentStatus === "done") {
-        tasksDone = tasksDone.filter((task) => task.id !== targetTaskId);
-      }
-      // Update the status of the task based on the id of the container
-      if (container.id === "ToDo") {
-        targetTask.status = "ToDo";
-        tasks.push(targetTask);
-      } else if (container.id === "doing") {
-        targetTask.status = "doing";
-        tasksDoing.push(targetTask);
-      } else if (container.id === "done") {
-        targetTask.status = "done";
-        tasksDone.push(targetTask);
-      }
-    }
-    console.log(tasks);
-    console.log(tasksDoing);
-    console.log(tasksDone);
-    // Save the updated arrays to local storage
-  });
-});
 // Go to the editTask.html page when a task is clicked
 function backToHome() {
   window.location.href = "./quadro.html";

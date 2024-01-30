@@ -175,7 +175,7 @@ footer {
   align-items: center;
 }
 
-.botao {
+.newButton {
   background: linear-gradient(45deg, yellow, orange);
   border-radius: 8px;
   float: right;
@@ -191,15 +191,12 @@ footer {
   visibility: hidden;
 }
 
-.tarefa:hover .botao {
+.task:hover .newButton {
   visibility: visible;
 }
 
-.tarefa:hover .botaoesq {
-  visibility: visible;
-}
 
-.tarefa:hover {
+.task:hover {
   font-weight: bolder;
   font-size: 24px;
 }
@@ -263,6 +260,6 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
 }
-.draggable.dragging {
-  cursor: move;
-}
+
+
+
