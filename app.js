@@ -14,19 +14,19 @@ window.onload = function () {
   if (localStorage.getItem("tasksToDo")) {
     tasks = JSON.parse(localStorage.getItem("tasksToDo"));
     tasks.forEach((task) => {
-      addTaskTable(task);
+      addTaskToTable(task);
     });
   }
   if (localStorage.getItem("tasksDoing")) {
     tasksDoing = JSON.parse(localStorage.getItem("tasksDoing"));
     tasksDoing.forEach((task) => {
-      addTaskTable(task);
+      addTaskToTable(task);
     });
   }
   if (localStorage.getItem("tasksDoing")) {
     tasksDone = JSON.parse(localStorage.getItem("tasksDone"));
     tasksDone.forEach((task) => {
-      addTaskTable(task);
+      addTaskToTable(task);
     });
   }
 };
@@ -68,39 +68,9 @@ function updateLabel(event) {
   }
 }
 
-/* Função para mudar a tarefa de coluna de To Do para Doing*/
-function mudarDeColunaDeToDoParaDoing() {
-  var tarefaAenviar = document.getElementById("tarefa1");
-  var colunaAreceber = document.getElementById("doing");
-
-  tarefaAenviar.innerHTML =
-    '<button type="button" class="botaoesq" onclick="mudarDeColunaDeDoingParaToDo()"> &larr; </button>Tarefa 1<button type="button" class="botao"> &rarr; </button>';
-  colunaAreceber.appendChild(tarefaAenviar);
-}
-
-/* Função para mudar a tarefa de coluna de Doing para ToDo */
-function mudarDeColunaDeDoingParaToDo() {
-  var tarefaAenviar = document.getElementById("tarefa1");
-  var colunaAreceber = document.getElementById("ToDo");
-
-  tarefaAenviar.innerHTML =
-    'Tarefa 1 <button type="button" class="botao" onclick="mudarDeColunaDeToDoParaDoing()"> &rarr; </button>';
-  colunaAreceber.appendChild(tarefaAenviar);
-}
-
-/* Criação de objetos - tarefas  - TESTE!!!!! */
-var contador = 1;
 
 function criarTarefa() {
   openAddTaskModal();
-  const tarefa1 = {
-    nome: "Revisão" + contador,
-    descricao: "fazer até dia 29!",
-  };
-  localStorage.setItem("task", tarefa1.nome);
-  console.log("rkekleerk");
-  contador++;
-  localStorage.setItem("contador", contador);
 }
 // Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
 // A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
@@ -125,10 +95,11 @@ function closeAddTaskModal() {
 
 //With function or class?
 //Construtor das tarefas
+
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = "task" + id++;
+  this.id = (id++)+"task";
   this.status = "ToDo";
 }
 // Função para adicionar tarefa
@@ -150,7 +121,7 @@ function addTaskModal(event) {
 }
 
 function addTaskToTable(task) {
-  var todoColumn = document.getElementById("ToDo");
+  var column = document.getElementById(task.status);
 
   // Create a new task element
   var newTaskElement = document.createElement("div");
@@ -168,14 +139,16 @@ function addTaskToTable(task) {
     newTaskElement.classList.remove("dragging");
   });
   // Append the task element to the ToDo column
-  todoColumn.appendChild(newTaskElement);
-  todoColumn.addEventListener("dragover", (e) => {
+  column.appendChild(newTaskElement);
+  column.addEventListener("dragover", (e) => {
     e.preventDefault();
     const draggable = document.querySelector(".dragging");
   });
   // Navigate to the URL when the task element is clicked (Edit)
-  document.querySelector(".task").addEventListener("click", (e) => {
-    const clickedId = e.target.id; // Get the ID of the clicked task
+  newTaskElement.addEventListener("click", (e) => {
+    let clickedId = e.target.id; // Get the ID of the clicked task
+    alert(clickedId);
+    localStorage.setItem("idAtual",clickedId);
     // Redirect to the editTask.html page
     window.location.href = "./editTask.html";
   });
@@ -187,35 +160,6 @@ function addTaskToTable(task) {
   } else if (task.status === "done") {
     tasksDone.push(task);
   }
-}
-// ? Trying to add the task to the correct column
-function addTaskTable(task) {
-  // Find the column that the task belongs to
-  var column = document.getElementById(task.status);
-  // Create a new task element
-  var newTaskElement = document.createElement("div");
-  newTaskElement.className = "task";
-  newTaskElement.textContent = task.name;
-  newTaskElement.id = task.id;
-  newTaskElement.draggable = true;
-  // Add event listeners for drag and drop functionality to use CSS
-  // to style the task element when it is being dragged
-  newTaskElement.addEventListener("dragstart", () => {
-    newTaskElement.classList.add("dragging");
-  });
-  newTaskElement.addEventListener("dragend", () => {
-    newTaskElement.classList.remove("dragging");
-  });
-  // Append the task element to the column
-
-  column.appendChild(newTaskElement);
-
-  // Navigate to the URL when the task element is clicked (Edit)
-  document.querySelector(".task").addEventListener("click", (e) => {
-    const clickedId = e.target.id; // Get the ID of the clicked task
-    // Redirect to the editTask.html page
-    window.location.href = "./editTask.html";
-  });
 }
 
 // Função para remover tarefa
@@ -297,6 +241,25 @@ containers.forEach((container) => {
 function backToHome() {
   window.location.href = "./quadro.html";
 }
+
+function editTask() {
+let idTask = localStorage.getItem("idAtual");
+
+alert(idTask);
+
+tasks.forEach((task) => {
+    if(idTask == task.id) {
+      alert(task.name);
+      task.name = document.getElementById("taskName").value;
+      alert(task.name);
+      save();
+    }
+    }
+    
+  )};
+  
+
+
 function save() {
   localStorage.setItem("tasksToDo", JSON.stringify(tasks));
   localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));

@@ -55,13 +55,13 @@
 
       <div class="prop">
         <label class="taskName">Nome da Tarefa:</label>
-        <input type="text" id="taskName" required />
+        <input type="text" id="taskName" />
         <br />
         <label id="addTaskDescription">Descrição:</label>
         <!-- Fix the ID to match the JavaScript code -->
-        <textarea id="taskDescription" required></textarea>
+        <textarea id="taskDescription"></textarea>
         <br />
-        <button class="#" onclick="backToHome()">Gravar</button>
+        <button class="#" onclick="editTask();backToHome()">Gravar</button>
         <button
           onclick="backToHome()"
           class="close-button"
@@ -80,17 +80,7 @@
       console.log(taskId);
       console.log(taskName);
       console.log(taskDescription);
-      // Use the data as needed in your JavaScript code
-      // Set text content in your HTML elements
-      document.getElementById(
-        "taskIdElement"
-      ).textContent = `Task ID: ${taskId}`;
-      document.getElementById(
-        "taskName"
-      ).textContent = `Task Name: ${taskName}`;
-      document.getElementById(
-        "taskDescription"
-      ).textContent = `Task Description: ${taskDescription}`;
     </script>
+    <script src="app.js"></script>
   </body>
 </html>
