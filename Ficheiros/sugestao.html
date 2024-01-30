@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Containers Example</title>
     <style>
       body {
@@ -32,7 +32,6 @@
         box-sizing: border-box;
         margin: 1rem;
         background-color: rgb(160, 136, 136);
-
       }
       .title {
         text-align: center;
@@ -42,7 +41,7 @@
       .btn-container {
         display: flex;
         justify-content: left;
-        flex-basis: 100%;        
+        flex-basis: 100%;
         width: 100%;
         background-color: rgb(38, 38, 145);
       }
@@ -52,13 +51,13 @@
         width: 100%;
         background-color: rgb(210, 210, 92);
       }
-      footer{
+      footer {
         display: block;
         height: 100%;
         background-color: rgb(177, 73, 172);
         text-align: center;
       }
-      .task.draggable{
+      .task.draggable {
         margin-bottom: 10px;
         padding: 10px;
         border: 1px solid #ccc;
@@ -70,14 +69,14 @@
         padding: 1rem;
         margin: 0.5rem;
       }
-      .status{
-        flex:1;
+      .status {
+        flex: 1;
         text-align: center;
         font-size: 2rem;
         font-weight: bold;
         background-color: rgb(255, 0, 0);
       }
-      .btn{
+      .btn {
         background-color: rgb(255, 255, 255);
         border: 1px solid rgb(0, 0, 0);
         border-radius: 5px;
@@ -100,30 +99,40 @@
           <h1>Quadro Scrum</h1>
         </div>
         <div class="btn-container">
-          <button class="btn">+</button></div>
-          
+          <button class="btn">+</button>
+        </div>
+
         <div class="center-container">
           <div class="vertical-container">
-            <div> <div class="status">TO DO</div> 
-            <div class="task-container">
-            <div class="task draggable" id="task1" draggable="true" ondragstart="drag(event)">Task 1</div>
-            <!-- tarefas -->
-        </div>
-        </div>
+            <div>
+              <div class="status">TO DO</div>
+              <div class="task-container">
+                <div
+                  class="task draggable"
+                  id="task1"
+                  draggable="true"
+                  ondragstart="drag(event)"
+                >
+                  Task 1
+                </div>
+                <!-- tarefas -->
+              </div>
+            </div>
           </div>
           <div class="vertical-container">
-            <div> <div class="status">DOING</div>
-            <div class="task-container">
-        </div>
-        </div>
-        </div>
+            <div>
+              <div class="status">DOING</div>
+              <div class="task-container"></div>
+            </div>
+          </div>
           <div class="vertical-container">
-            <div> <div class="status">DONE</div>
-            <div class="task-container">
-            <!-- tarefas -->
-        </div>
-        </div>
-        </div>
+            <div>
+              <div class="status">DONE</div>
+              <div class="task-container">
+                <!-- tarefas -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
