@@ -1,3 +1,36 @@
+let id = 1;
+let tasks = [];
+let tasksDoing = [];
+let tasksDone = [];
+
+window.onload = function () {
+  if (localStorage.getItem("username")) {
+    document.getElementById("nomeAaparecerNoEcra").innerHTML =
+      localStorage.getItem("username");
+  }
+  if (localStorage.getItem("id")) {
+    id = localStorage.getItem("id");
+  }
+  if (localStorage.getItem("tasksToDo")) {
+    tasks = JSON.parse(localStorage.getItem("tasksToDo"));
+    tasks.forEach((task) => {
+      addTaskTable(task);
+    });
+  }
+  if (localStorage.getItem("tasksDoing")) {
+    tasksDoing = JSON.parse(localStorage.getItem("tasksDoing"));
+    tasksDoing.forEach((task) => {
+      addTaskTable(task);
+    });
+  }
+  if (localStorage.getItem("tasksDoing")) {
+    tasksDone = JSON.parse(localStorage.getItem("tasksDone"));
+    tasksDone.forEach((task) => {
+      addTaskTable(task);
+    });
+  }
+};
+
 /* Função parar pausar o vídeo de fundo através da checkbox  */
 function PausarVideo() {
   var video = document.getElementById("video-background");
@@ -89,10 +122,7 @@ function closeAddTaskModal() {
   document.querySelector(".modal-background").style.display = "none";
 }
 // Operacoes com tarefas
-let tasks = [];
-let tasksDoing = [];
-let tasksDone = [];
-let id = 1;
+
 //With function or class?
 //Construtor das tarefas
 function Task(name, description) {
@@ -113,10 +143,10 @@ function addTaskModal(event) {
   console.log("Nome da Tarefa:", taskName);
   console.log("Descrição:", taskDescription);
   console.log("ID:", task.id);
-
   addTaskToTable(task);
   // Fechar o modal após adicionar a tarefa
   closeAddTaskModal();
+  save();
 }
 
 function addTaskToTable(task) {
@@ -124,7 +154,7 @@ function addTaskToTable(task) {
 
   // Create a new task element
   var newTaskElement = document.createElement("div");
-  newTaskElement.className = "tarefa";
+  newTaskElement.className = "task";
   newTaskElement.textContent = task.name;
   newTaskElement.id = task.id;
   newTaskElement.draggable = true;
@@ -144,17 +174,53 @@ function addTaskToTable(task) {
     const draggable = document.querySelector(".dragging");
   });
   // Navigate to the URL when the task element is clicked (Edit)
-  document.querySelector(".tarefa").addEventListener("click", (e) => {
+  document.querySelector(".task").addEventListener("click", (e) => {
     const clickedId = e.target.id; // Get the ID of the clicked task
     // Redirect to the editTask.html page
     window.location.href = "./editTask.html";
   });
   // Add the task to the tasks array
-  tasks.push(task);
+  if (task.status === "ToDo") {
+    tasks.push(task);
+  } else if (task.status === "doing") {
+    tasksDoing.push(task);
+  } else if (task.status === "done") {
+    tasksDone.push(task);
+  }
+}
+// ? Trying to add the task to the correct column
+function addTaskTable(task) {
+  // Find the column that the task belongs to
+  var column = document.getElementById(task.status);
+  // Create a new task element
+  var newTaskElement = document.createElement("div");
+  newTaskElement.className = "task";
+  newTaskElement.textContent = task.name;
+  newTaskElement.id = task.id;
+  newTaskElement.draggable = true;
+  // Add event listeners for drag and drop functionality to use CSS
+  // to style the task element when it is being dragged
+  newTaskElement.addEventListener("dragstart", () => {
+    newTaskElement.classList.add("dragging");
+  });
+  newTaskElement.addEventListener("dragend", () => {
+    newTaskElement.classList.remove("dragging");
+  });
+  // Append the task element to the column
+
+  column.appendChild(newTaskElement);
+
+  // Navigate to the URL when the task element is clicked (Edit)
+  document.querySelector(".task").addEventListener("click", (e) => {
+    const clickedId = e.target.id; // Get the ID of the clicked task
+    // Redirect to the editTask.html page
+    window.location.href = "./editTask.html";
+  });
 }
 
 // Função para remover tarefa
-function removeTask(taskId) {
+//! verificar se está a remover a tarefa certa!
+function removeTask(task) {
   // Remove the task from the tasks array
   tasks = tasks.filter(function (task) {
     return task.id !== taskId;
@@ -166,6 +232,7 @@ function removeTask(taskId) {
   } else {
     console.log("Task element not found");
   }
+  save();
 }
 
 // Add event listeners for drag and drop functionality to all columns
@@ -191,12 +258,12 @@ containers.forEach((container) => {
       tasksDoing.find((task) => task.id === targetTaskId) ||
       tasksDone.find((task) => task.id === targetTaskId);
 
-      
     if (targetTask) {
       let targetCurrentStatus = targetTask.status;
       console.log(targetCurrentStatus, " --");
 
       // Remove the task from the array based on the current status
+
       if (targetCurrentStatus === "ToDo") {
         tasks = tasks.filter((task) => task.id !== targetTaskId);
       } else if (targetCurrentStatus === "doing") {
@@ -208,32 +275,30 @@ containers.forEach((container) => {
       if (container.id === "ToDo") {
         targetTask.status = "ToDo";
         tasks.push(targetTask);
+        save();
       } else if (container.id === "doing") {
         targetTask.status = "doing";
         tasksDoing.push(targetTask);
+        save();
       } else if (container.id === "done") {
         targetTask.status = "done";
         tasksDone.push(targetTask);
+        save();
       }
     }
     console.log(tasks);
     console.log(tasksDoing);
     console.log(tasksDone);
+    // Save the updated arrays to local storage
+    save();
   });
 });
-
+// Go to the editTask.html page when a task is clicked
 function backToHome() {
   window.location.href = "./quadro.html";
 }
-
-function printAllTasksID() {
-  let taskss = document.tasks;
+function save() {
+  localStorage.setItem("tasksToDo", JSON.stringify(tasks));
+  localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
+  localStorage.setItem("tasksDone", JSON.stringify(tasksDone));
 }
-
-const btn_login = document.getElementById("btn-login");
-const username = document.getElementById("username");
-btn_login.addEventListener("click", () => {
-  localStorage.setItem("username", username.value);
-  console.log(username.value);
-  localStorage.getItem("username");
-});
