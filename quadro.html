@@ -6,16 +6,10 @@
     <link rel="stylesheet" href="interface.css">
 </head>
 <body>
-    <video id="video-background" autoplay muted loop>
-        <source src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4" type="video/mp4">
-        </video>
-
         <div id="quadro">
             <!--O header não deve ter todos estes elementos.-->
             <header>
                 <button type="button" id="createTask"  onclick="criarTarefa()"> Adicionar tarefa </button>
-                <label for="nomeUtilizador" id="labelNomeUtilizador">Nome de Utilizador</label>
-                <input type="text" id="nomeUtilizador" name="Nome de Utilizador" onkeypress="updateLabel(event)" maxlength="25">  
                 <label id="nomeAaparecerNoEcra"> nome_no_ecrã</label>
             </header>
         
@@ -26,12 +20,7 @@
         
                 <div class="coluna" id="doing">
                     <h2>Doing</h2>
-                    <!--<div class="tarefa">
-                         <button type="button" class="botaoesq" onclick="mudarDeColunaDeDoingParaToDo()"> &larr; </button> 
-                         Tarefa 3
-                         <button type="button" class="botao"> &rarr; </button>
-                        </div>
-                        -->
+                    
                 </div>
         
                 <div class="coluna" id="done">
@@ -51,7 +40,7 @@
                           <label for="addTaskDescription">Descrição:</label>
                           <!-- Fix the ID to match the JavaScript code -->
                           <textarea type="text" id="addTaskDescription" required></textarea>
-                          <br />
+                          <br /> 
                           <button type="submit" class="#" onclick="addTaskModal(event)">Adicionar</button>
                         </form>
                         <button onclick="closeAddTaskModal()" class="close-button" id="close-button-color">X</button>
