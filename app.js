@@ -135,7 +135,7 @@ function closeAddTaskModal() {
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = "task" + id++;
+  this.id = id++;
   this.status = "ToDo";
   localStorage.setItem("id", id);
 }
@@ -190,10 +190,29 @@ function createElements(task) {
   });
   newTaskElement.addEventListener("click", (e) => {
     // Redirect to the editTask.html page
+    let clickedId = e.target.id; // Get the ID of the clicked task
+    alert(clickedId);
+    localStorage.setItem("idAtual",clickedId);
     window.location.href = "./editTask.html";
   });
   column.appendChild(newTaskElement);
 }
+
+function editTask() {
+  let idTask = localStorage.getItem("idAtual");
+  
+  alert(idTask);
+  
+  tasks.forEach((task) => {
+      if(idTask == task.id) {
+        alert(task.name);
+        task.name = document.getElementById("taskName").value;
+        alert(task.name);
+        save();
+      }
+      }
+      
+    )};
 
 // Função para remover tarefa
 //! verificar se está a remover a tarefa certa!
