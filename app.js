@@ -5,9 +5,8 @@ let tasksDone = [];
 const containers = document.querySelectorAll(".coluna");
 
 window.onload = function () {
-  if (localStorage.getItem("username")) {
-    document.getElementById("nomeAaparecerNoEcra").innerHTML =
-      localStorage.getItem("username");
+  if (localStorage.getItem("usernameGravado")) {
+    document.getElementById("nomeAaparecerNoEcra").innerHTML = localStorage.getItem("usernameGravado");
   }
   if (localStorage.getItem("id")) {
     id = localStorage.getItem("id");
@@ -31,6 +30,12 @@ window.onload = function () {
     });
   }
 };
+
+function GuardarUsername() {
+  let username = document.getElementById("username").value;
+  localStorage.setItem("usernameGravado",username);
+}
+
 
 // Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
 // A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
