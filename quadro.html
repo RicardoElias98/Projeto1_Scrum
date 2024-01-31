@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Scrum Board</title>
-    <link rel="stylesheet" href="interface.css">
-</head>
-<body>
-    <video id="video-background" autoplay muted loop>
-        <source src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4" type="video/mp4">
-        </video>
+    <link rel="stylesheet" href="interface.css" />
+  </head>
+  <body>
+    <!--<video id="video-background" autoplay muted loop>
+      <source
+        src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4"
+        type="video/mp4"
+      />
+    </video>-->
 
-        <div id="quadro">
-            <!--O header não deve ter todos estes elementos.-->
-            <header>
-                <button type="button" id="createTask"  onclick="criarTarefa()"> Adicionar tarefa </button>
-                <label for="nomeUtilizador" id="labelNomeUtilizador">Nome de Utilizador</label>
-                <input type="text" id="nomeUtilizador" name="Nome de Utilizador" onkeypress="updateLabel(event)" maxlength="25">  
-                <label id="nomeAaparecerNoEcra"> nome_no_ecrã</label>
-            </header>
-        
-            <main>
-                <div class="coluna" id="ToDo">
-                    <h2>To do</h2> 
-                </div>
-        
-                <div class="coluna" id="doing">
-                    <h2>Doing</h2>
-                    <!--<div class="tarefa">
-                         <button type="button" class="botaoesq" onclick="mudarDeColunaDeDoingParaToDo()"> &larr; </button> 
-                         Tarefa 3
-                         <button type="button" class="botao"> &rarr; </button>
-                        </div>
-                        -->
-                </div>
-        
-                <div class="coluna" id="done">
-                    <h2>Done</h2>
-                </div>
-                <div>
-                    <!-- Botão para abrir o modal -->
-                    
-                
-                    <!-- Modal -->
-                    <div id="addTaskModal" class="formulario_do_modal">
-                        <h2 class="#">Adicionar Tarefa</h2>
-                        <form onsubmit="addTaskModal(); return false;">
-                          <label for="addTaskName">Nome da Tarefa:</label>
-                          <input type="text" id="addTaskName" required />
-                          <br />
-                          <label for="addTaskDescription">Descrição:</label>
-                          <!-- Fix the ID to match the JavaScript code -->
-                          <textarea type="text" id="addTaskDescription" required></textarea>
-                          <br />
-                          <button type="submit" class="#" onclick="addTaskModal(event)">Adicionar</button>
-                        </form>
-                        <button onclick="closeAddTaskModal()" class="close-button" id="close-button-color">X</button>
-                      </div>
-                      
-                      <!-- Fundo escuro no painel anterior -->
-                      <div class="modal-background" onclick="closeAddTaskModal()"></div>
-                    
-            </main>
-        
-            <!-- Tutorial de todas as funcionalidades do Scrum Board -->
-            <footer>
-                <h2> <a  target="_blank" > Tutorial </a> </a> </h2>
-            </footer>
+    <div class="borderMain" id="quadro">
+      <!--O header não deve ter todos estes elementos.-->
+      <header>
+        <button
+          type="button"
+          class="btn"
+          id="createTask"
+          onclick="criarTarefa()"
+        >
+          Adicionar tarefa
+        </button>
+
+        <label id="nomeAaparecerNoEcra"> nome_no_ecrã</label>
+      </header>
+
+      <main>
+        <div class="container-columns">
+          <div class="container-columns-title border">
+            <h2 class="column-title">To do</h2>
+            <div class="coluna" id="ToDo"></div>
+          </div>
+          <div class="container-columns-title border">
+            <h2 class="column-title">Doing</h2>
+            <div class="coluna" id="doing"></div>
+          </div>
+          <div class="container-columns-title border">
+            <h2 class="column-title">Done</h2>
+            <div class="coluna" id="done"></div>
+          </div>
         </div>
-        <script src="app.js"></script>
-</body>
+        <!-- Modal -->
+        <div id="addTaskModal" class="formulario_do_modal">
+          <h2 class="#">Adicionar Tarefa</h2>
+          <form onsubmit="addTaskModal(); return false;">
+            <label for="addTaskName">Nome da Tarefa:</label>
+            <input type="text" id="addTaskName" required />
+            <br />
+            <label for="addTaskDescription">Descrição:</label>
+            <!-- Fix the ID to match the JavaScript code -->
+            <textarea type="text" id="addTaskDescription" required></textarea>
+            <br />
+            <button type="submit" class="#" onclick="addTaskModal(event)">
+              Adicionar
+            </button>
+          </form>
+          <button
+            onclick="closeAddTaskModal()"
+            class="close-button"
+            id="close-button-color"
+          >
+            X
+          </button>
+        </div>
+
+        <!-- Fundo escuro no painel anterior -->
+        <div class="modal-background" onclick="closeAddTaskModal()"></div>
+      </main>
+      <footer>
+        <a target="_blank"></a>
+        <div class="footer-r">
+          Bro ipsum dolor sit amet misty huck phat face plant huck free ride
+          euro brain®
+        </div>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
