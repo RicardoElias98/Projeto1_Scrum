@@ -6,8 +6,6 @@ html {
   align-items: center; /* alinha verticalmente */
   justify-content: center; /* alinha horizontal */
   width: 100%;
-  background-image: url(Imagens/Captura\ de\ ecrã\ 2024-01-31\,\ às\ 10.38.57.png);
-  background-position:fixed;
 }
 
 /* Estilo do "painel do login" */
@@ -177,7 +175,7 @@ footer {
   align-items: center;
 }
 
-.newButton {
+.botao {
   background: linear-gradient(45deg, yellow, orange);
   border-radius: 8px;
   float: right;
@@ -193,12 +191,15 @@ footer {
   visibility: hidden;
 }
 
-.task:hover .newButton {
+.tarefa:hover .botao {
   visibility: visible;
 }
 
+.tarefa:hover .botaoesq {
+  visibility: visible;
+}
 
-.task:hover {
+.tarefa:hover {
   font-weight: bolder;
   font-size: 24px;
 }
@@ -211,6 +212,24 @@ h2 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(45deg, yellow, orange);
   border-radius: 8px;
+}
+
+#labelNomeUtilizador {
+  font-size: 14px;
+  color: black;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, yellow, orange);
+  padding: 1px;
+  border: 2px solid black;
+}
+
+#nomeUtilizador {
+  opacity: 0.4;
+}
+
+#nomeUtilizador:hover {
+  opacity: 1;
 }
 
 #createTask {
@@ -262,6 +281,6 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 900; /* Z-index menor que o modal para garantir que esteja abaixo */
 }
-
-
-
+.draggable.dragging {
+  cursor: move;
+}

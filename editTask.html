@@ -55,13 +55,13 @@
 
       <div class="prop">
         <label class="taskName">Nome da Tarefa:</label>
-        <input type="text" id="taskName" />
+        <input type="text" id="taskName" required />
         <br />
         <label id="addTaskDescription">Descrição:</label>
         <!-- Fix the ID to match the JavaScript code -->
-        <textarea id="taskDescription"></textarea>
+        <textarea id="taskDescription" required></textarea>
         <br />
-        <button class="#" onclick="editTask();backToHome()">Gravar</button>
+        <button class="#" onclick="backToHome()">Gravar</button>
         <button
           onclick="backToHome()"
           class="close-button"
@@ -80,7 +80,7 @@
       console.log(taskId);
       console.log(taskName);
       console.log(taskDescription);
+      
     </script>
-    <script src="app.js"></script>
   </body>
 </html>
