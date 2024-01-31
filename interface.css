@@ -6,6 +6,8 @@ html {
   align-items: center; /* alinha verticalmente */
   justify-content: center; /* alinha horizontal */
   width: 100%;
+  background-image: url(Imagens/Captura\ de\ ecrã\ 2024-01-31\,\ às\ 10.38.57.png);
+  background-position:fixed;
 }
 
 /* Estilo do "painel do login" */

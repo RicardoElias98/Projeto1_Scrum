@@ -135,10 +135,10 @@ function addTaskToTable(task) {
     let indiceID = (newTaskElement.id)-1;
     tasks.splice(indiceID,1)
     save();
-    
-    
+    location.reload();
   }
 
+  
   
   
 
