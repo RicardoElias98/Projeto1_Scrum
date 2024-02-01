@@ -5,9 +5,8 @@ let tasksDone = [];
 const containers = document.querySelectorAll(".coluna");
 
 window.onload = function () {
-  if (localStorage.getItem("username")) {
-    document.getElementById("nomeAaparecerNoEcra").innerHTML =
-      localStorage.getItem("username");
+  if (localStorage.getItem("usernameGravado")) {
+    document.getElementById("nomeAaparecerNoEcra").innerHTML = localStorage.getItem("usernameGravado");
   }
   if (localStorage.getItem("id")) {
     id = localStorage.getItem("id");
@@ -31,6 +30,12 @@ window.onload = function () {
     });
   }
 };
+
+function GuardarUsername() {
+  let username = document.getElementById("username").value;
+  localStorage.setItem("usernameGravado",username);
+}
+
 
 // Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
 // A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
@@ -130,9 +135,10 @@ function closeAddTaskModal() {
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = "task" + id++;
+  this.id = id++;
   this.status = "ToDo";
   localStorage.setItem("id", id);
+  localStorage.setItem("name", name);
 }
 // Função para adicionar tarefa
 function addTaskModal(event) {
@@ -185,10 +191,35 @@ function createElements(task) {
   });
   newTaskElement.addEventListener("click", (e) => {
     // Redirect to the editTask.html page
+    let clickedId = e.target.id; // Get the ID of the clicked task
+    let clickedName = e.target.textContent; 
+    //alert(clickedId);
+    localStorage.setItem("idAtual",clickedId);
+    //alert(clickedName);
+    localStorage.setItem("nomeAtual",clickedName);
     window.location.href = "./editTask.html";
   });
   column.appendChild(newTaskElement);
 }
+
+function editTask() {
+  let idTask = localStorage.getItem("idAtual");
+  let nome = localStorage.getItem("nomeAtual");
+  
+
+  console.log(idTask);
+  console.log(nome);
+  
+  tasks.forEach((task) => {
+      if(idTask == task.id) {
+        alert(task.name);
+        task.name = document.getElementById("taskName").value;
+        alert(task.name);
+        save();
+      }
+      }
+      
+    )};
 
 // Função para remover tarefa
 //! verificar se está a remover a tarefa certa!
