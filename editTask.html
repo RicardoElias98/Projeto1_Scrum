@@ -6,34 +6,35 @@
     <link rel="stylesheet" href="interface.css" />
 
     <title>Document</title>
-    <style></style>
   </head>
   <body>
-    <div class="borderMain" id="editTask">
-      <div class="main-top title">Editar Tarefa</div>
+    <div class="borderMain window-extra" id="editTask">
+      <div class="main-top title"><h2>Editar Tarefa</h2></div>
       <br />
       <div class="prop">
         <label class="taskName left-align">Nome da Tarefa:</label>
-        <br />
         <input
           type="text"
-          class="textBox limitBox box-size"
+          class="textBox limitBox taskName name-"
           id="taskName"
           required
         />
         <br />
         <!--<label id="addTaskDescription">Descrição:</label>-->
-        <label id="editTaskDescription">Descrição:</label>
-        <br />
+        <label id="editTaskDescription" class="taskName left-align"
+          >Descrição:</label
+        >
         <!-- Fix the ID to match the JavaScript code -->
         <textarea
           id="taskDescription"
-          class="textBox limitBox description-box box-size"
+          class="textBox limitBox taskDescription description-box"
           required
         ></textarea>
         <br />
-        <div class="container-btn">
+        <div class="container-btn" id="btn-center">
           <button class="btn" onclick="backToHome()">Gravar</button>
+          <button class="btn" onclick="">Eliminar</button>
+          <!-- ELIMINAATE TASK-->
           <button
             onclick="backToHome()"
             class="btn red"

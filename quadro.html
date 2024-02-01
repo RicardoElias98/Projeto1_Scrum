@@ -14,11 +14,15 @@
     </video>-->
 
     <div class="borderMain quadro" id="quadro">
+      <div class="title">
+        <h1>Scrum Board</h1>
+        <img src="Imagens/logoScrum.png" class="logo-dimension" />
+      </div>
       <!--O header não deve ter todos estes elementos.-->
       <header>
         <button
           type="button"
-          class="btn"
+          class="btn addTaskButton plus"
           id="createTask"
           onclick="criarTarefa()"
         >
@@ -45,22 +49,31 @@
         </div>
 
         <!-- Modal -->
-        <div id="addTaskModal" class="formulario_do_modal borderMain">
-          <h2 class="#">Adicionar Tarefa</h2>
+        <div
+          id="addTaskModal"
+          class="formulario_do_modal borderMain window-extra"
+        >
+          <h2 class="left-align margin">Adicionar Tarefa</h2>
           <form onsubmit="addTaskModal(); return false;">
             <div class="prop">
-              <label for="addTaskName">Nome da Tarefa:</label>
+              <label for="addTaskName" class="margin left-align"
+                >Nome da Tarefa:</label
+              >
               <input
                 type="text"
                 id="addTaskName"
-                class="textBox limitBox box-size"
+                class="textBox box-size margin name-box"
                 required
               />
-              <label for="addTaskDescription">Descrição:</label>
+              <label
+                for="addTaskDescription"
+                class="texBox limitBox box-size margin left-align"
+                >Descrição:</label
+              >
               <!-- Fix the ID to match the JavaScript code -->
               <textarea
                 id="addTaskDescription"
-                class="textBox limitBox taskDescriptionAdd description-box box-size"
+                class="textBox limitBox taskDescriptionAdd description-box box-size margin"
                 required
               ></textarea>
             </div>
