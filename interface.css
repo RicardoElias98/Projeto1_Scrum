@@ -6,6 +6,8 @@ html {
   align-items: taskDescriptioncenter; /* alinha verticalmente */
   justify-content: center; /* alinha horizontal */
   width: 100%;
+  background-image: url(Imagens/Captura\ de\ ecrã\ 2024-01-31\,\ às\ 10.38.57.png);
+  background-position:fixed;
 }
 
 /* Estilo do "painel do login" */
@@ -224,7 +226,7 @@ footer {
   box-shadow: 1px 3px 1px black;
 }
 
-.botao {
+.newButton {
   background: linear-gradient(45deg, yellow, orange);
   border-radius: 8px;
   float: right;
@@ -240,15 +242,12 @@ footer {
   visibility: hidden;
 }
 
-.tarefa:hover .botao {
+.task:hover .newButton {
   visibility: visible;
 }
 
-.tarefa:hover .botaoesq {
-  visibility: visible;
-}
 
-.tarefa:hover {
+.task:hover {
   font-weight: bolder;
   font-size: 24px;
 }
