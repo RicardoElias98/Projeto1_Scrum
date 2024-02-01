@@ -61,7 +61,7 @@
         <!-- Fix the ID to match the JavaScript code -->
         <textarea id="taskDescription" required></textarea>
         <br />
-        <button class="#" onclick="editTask();backToHome()">Gravar</button>
+        <button class="#" onclick="editTask(),backToHome()">Gravar</button>
         <button
           onclick="backToHome()"
           class="close-button"
@@ -71,16 +71,6 @@
         </button>
       </div>
     </div>
-    <script>
-      // Retrieve data from local storage
-      const taskId = localStorage.getItem("taskId");
-      const taskName = localStorage.getItem("taskName");
-      const taskDescription = localStorage.getItem("taskDescription");
-
-      console.log(taskId);
-      console.log(taskName);
-      console.log(taskDescription);
-      
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>

@@ -138,6 +138,7 @@ function Task(name, description) {
   this.id = id++;
   this.status = "ToDo";
   localStorage.setItem("id", id);
+  localStorage.setItem("name", name);
 }
 // Função para adicionar tarefa
 function addTaskModal(event) {
@@ -191,8 +192,11 @@ function createElements(task) {
   newTaskElement.addEventListener("click", (e) => {
     // Redirect to the editTask.html page
     let clickedId = e.target.id; // Get the ID of the clicked task
-    alert(clickedId);
+    let clickedName = e.target.textContent; 
+    //alert(clickedId);
     localStorage.setItem("idAtual",clickedId);
+    //alert(clickedName);
+    localStorage.setItem("nomeAtual",clickedName);
     window.location.href = "./editTask.html";
   });
   column.appendChild(newTaskElement);
@@ -200,8 +204,11 @@ function createElements(task) {
 
 function editTask() {
   let idTask = localStorage.getItem("idAtual");
+  let nome = localStorage.getItem("nomeAtual");
   
-  alert(idTask);
+
+  console.log(idTask);
+  console.log(nome);
   
   tasks.forEach((task) => {
       if(idTask == task.id) {
