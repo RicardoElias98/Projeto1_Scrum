@@ -3,84 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="interface.css" />
+
     <title>Document</title>
-    <style>
-      .container-main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /*editar tarefa centrado v.*/
-        height: 500px;
-        width: 400px;
-        background-color: red;
-        margin: auto;
-      }
-      .container-main.main-top {
-        display: flex;
-        position: relative;
-        text-align: center;
-        height: 40px;
-        width: 100%;
-        background-color: blue;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-      }
-      .prop {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-      }
-      #taskName,
-      #taskDescription {
-        width: 100%;
-        width: 300px;
-        resize: none;
-      }
-      #taskDescription {
-        height: 300px;
-      }
-      .title {
-        font-size: 20px;
-        font-weight: bold;
-      }
-    </style>
   </head>
   <body>
-    <div class="container-main">
-      <div class="container-main main-top title">Editar Tarefa</div>
-
+    <div class="borderMain window-extra" id="editTask">
+      <div class="main-top title"><h2>Editar Tarefa</h2></div>
+      <br />
       <div class="prop">
-        <label class="taskName">Nome da Tarefa:</label>
-        <input type="text" id="taskName" required />
+        <label class="taskName left-align">Nome da Tarefa:</label>
+        <input
+          type="text"
+          class="textBox limitBox taskName name-"
+          id="taskName"
+          required
+        />
         <br />
-        <label id="addTaskDescription">Descrição:</label>
-        <!-- Fix the ID to match the JavaScript code -->
-        <textarea id="taskDescription" required></textarea>
-        <br />
-        <button class="#" onclick="backToHome()">Gravar</button>
-        <button
-          onclick="backToHome()"
-          class="close-button"
-          id="close-button-color"
+        <!--<label id="addTaskDescription">Descrição:</label>-->
+        <label id="editTaskDescription" class="taskName left-align"
+          >Descrição:</label
         >
-          X
-        </button>
+        <!-- Fix the ID to match the JavaScript code -->
+        <textarea
+          id="taskDescription"
+          class="textBox limitBox taskDescription description-box"
+          required
+        ></textarea>
+        <br />
+        <div class="container-btn" id="btn-center">
+          <button class="btn" onclick="backToHome()">Gravar</button>
+          <button class="btn" onclick="">Eliminar</button>
+          <!-- ELIMINAATE TASK-->
+          <button
+            onclick="backToHome()"
+            class="btn red"
+            id="close-button-color"
+          >
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
-    <script>
-      // Retrieve data from local storage
-      const taskId = localStorage.getItem("taskId");
-      const taskName = localStorage.getItem("taskName");
-      const taskDescription = localStorage.getItem("taskDescription");
-
-      console.log(taskId);
-      console.log(taskName);
-      console.log(taskDescription);
-      
-    </script>
+    <script src="app.js"></script>
   </body>
 </html>
