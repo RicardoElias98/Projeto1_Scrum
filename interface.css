@@ -7,13 +7,15 @@ html {
   justify-content: center; /* alinha horizontal */
   width: 100%;
   background-image: url(Imagens/download.png);
-  background-position:fixed;
+  background-size: cover;
+  background-position: fixed;
 }
 
 /* Estilo do "painel do login" */
 .formulario_do_login {
   display: flex;
-  height: 400px;
+  flex-direction: column;
+  height: 450px;
   width: 300px; /* largura */
   margin: 50px auto; /*  cria uma margem superior e centraliza o formulário */
   background-color: rgb(99, 99, 99);
