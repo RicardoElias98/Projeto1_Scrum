@@ -12,8 +12,6 @@ window.onload = function () {
 function editTask() {
   let idTask = localStorage.getItem("idAtual");
 
-  alert(idTask);
-
   tasks.forEach((task) => {
     if (idTask == task.id) {
       task.name = document.getElementById("taskName").value;

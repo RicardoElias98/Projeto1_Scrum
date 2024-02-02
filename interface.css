@@ -87,24 +87,6 @@ html {
   margin-bottom: 10px; /* sobe o label para alinhar */
 }
 
-#pausarVideo {
-  display: flex;
-  align-items: center;
-}
-
-#pausarVideo input {
-  margin-right: 0px; /* tira a margem direita */
-  width: 10%; /* altera a largura inicial para os inputs para 10%  */
-}
-
-#pausarVideo label {
-  white-space: nowrap; /* impede que o texto seja "partido" */
-
-  margin-left: 0px; /* tira a margem esquerda */
-
-  margin-bottom: 10px; /* sobe o label para alinhar */
-}
-
 #TituloPainelLogin {
   text-align: center;
   margin-bottom: 20px;
@@ -114,16 +96,6 @@ html {
   font-weight: bolder;
 
   /*text-shadow: 2px 2px 2px gray; /* Sombra do texto */
-}
-
-#video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
 .quadro {
