@@ -37,13 +37,6 @@ function GuardarUsername() {
   localStorage.setItem("usernameGravado", username);
 }
 
-// Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
-// A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
-let createTaskButton = document.getElementById("createTask");
-if (createTaskButton) {
-  createTaskButton.onclick = criarTarefa;
-}
-
 /* Função para ver a password através da checkbox */
 function VerPassword() {
   var passwordInput = document.getElementById("password");
@@ -54,54 +47,6 @@ function VerPassword() {
   } else {
     passwordInput.type = "password";
   }
-}
-
-/* Função após carregar no ENTER */
-function updateLabel(event) {
-  if (event.key == "Enter") {
-    var nomeUtilizadorInput = document.getElementById("nomeUtilizador");
-    var nomeAaparecerNoEcraLabel = document.getElementById(
-      "nomeAaparecerNoEcra"
-    );
-
-    // Atualiza o nome do utilizador
-    nomeAaparecerNoEcraLabel.textContent = nomeUtilizadorInput.value;
-  }
-}
-
-/* Função para mudar a tarefa de coluna de To Do para Doing*/
-function mudarDeColunaDeToDoParaDoing() {
-  var tarefaAenviar = document.getElementById("tarefa1");
-  var colunaAreceber = document.getElementById("doing");
-
-  tarefaAenviar.innerHTML =
-    '<button type="button" class="botaoesq" onclick="mudarDeColunaDeDoingParaToDo()"> &larr; </button>Tarefa 1<button type="button" class="botao"> &rarr; </button>';
-  colunaAreceber.appendChild(tarefaAenviar);
-}
-
-/* Função para mudar a tarefa de coluna de Doing para ToDo */
-function mudarDeColunaDeDoingParaToDo() {
-  var tarefaAenviar = document.getElementById("tarefa1");
-  var colunaAreceber = document.getElementById("ToDo");
-
-  tarefaAenviar.innerHTML =
-    'Tarefa 1 <button type="button" class="botao" onclick="mudarDeColunaDeToDoParaDoing()"> &rarr; </button>';
-  colunaAreceber.appendChild(tarefaAenviar);
-}
-
-/* Criação de objetos - tarefas  - TESTE!!!!! */
-var contador = 1;
-
-function criarTarefa() {
-  openAddTaskModal();
-  const tarefa1 = {
-    nome: "Revisão" + contador,
-    descricao: "fazer até dia 29!",
-  };
-  localStorage.setItem("task", tarefa1.nome);
-  console.log("rkekleerk");
-  contador++;
-  localStorage.setItem("contador", contador);
 }
 
 // Funções do modal, janela que aparece quando clicamos no botão "Adicionar tarefa"
@@ -135,10 +80,6 @@ function addTaskModal(event) {
   var taskDescription = document.getElementById("addTaskDescription").value;
   // Create a new task object
   let task = new Task(taskName, taskDescription);
-  // See the attributes of the task object in the console
-  console.log("Nome da Tarefa:", taskName);
-  console.log("Descrição:", taskDescription);
-  console.log("ID:", task.id);
   addTaskToTable(task);
   // Fechar o modal após adicionar a starefa
   closeAddTaskModal();
@@ -146,7 +87,6 @@ function addTaskModal(event) {
 }
 
 function addTaskToTable(task) {
-  var todoColumn = document.getElementById("ToDo");
   // Create a new task element
   createElements(task);
   // Add the task to the tasks array
