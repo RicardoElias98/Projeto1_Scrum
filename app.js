@@ -44,18 +44,6 @@ if (createTaskButton) {
   createTaskButton.onclick = criarTarefa;
 }
 
-/* Função parar pausar o vídeo de fundo através da checkbox  */
-function PausarVideo() {
-  var video = document.getElementById("video-background");
-  var pausarVideoCheckbox = document.getElementById("pausarVideoCheckBox");
-
-  if (pausarVideoCheckbox.checked) {
-    video.pause();
-  } else {
-    video.play();
-  }
-}
-
 /* Função para ver a password através da checkbox */
 function VerPassword() {
   var passwordInput = document.getElementById("password");
@@ -135,10 +123,10 @@ function closeAddTaskModal() {
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = id++;
+  this.id = (id++) + "task";
   this.status = "ToDo";
   localStorage.setItem("id", id);
-  localStorage.setItem("name", name);
+  
 }
 // Função para adicionar tarefa
 function addTaskModal(event) {
@@ -153,7 +141,7 @@ function addTaskModal(event) {
   console.log("Descrição:", taskDescription);
   console.log("ID:", task.id);
   addTaskToTable(task);
-  // Fechar o modal após adicionar a tarefa
+  // Fechar o modal após adicionar a starefa
   closeAddTaskModal();
   save();
 }
@@ -181,7 +169,9 @@ function createElements(task) {
   newTaskElement.className = "task";
   newTaskElement.textContent = task.name;
   newTaskElement.id = task.id;
+  newTaskElement.description= task.description;
   newTaskElement.draggable = true;
+
   // Add event listeners for drag and drop functionality to use CSS
   newTaskElement.addEventListener("dragstart", () => {
     newTaskElement.classList.add("dragging");
@@ -193,33 +183,48 @@ function createElements(task) {
     // Redirect to the editTask.html page
     let clickedId = e.target.id; // Get the ID of the clicked task
     let clickedName = e.target.textContent; 
+    let clickedDescription = e.target.description;
     //alert(clickedId);
     localStorage.setItem("idAtual",clickedId);
-    //alert(clickedName);
     localStorage.setItem("nomeAtual",clickedName);
+    localStorage.setItem("descricaoAtual",clickedDescription);
+    //document.getElementById("taskName").value = clickedName;
     window.location.href = "./editTask.html";
+    //alert(clickedName);
+    
   });
   column.appendChild(newTaskElement);
 }
 
+
+
 function editTask() {
   let idTask = localStorage.getItem("idAtual");
-  let nome = localStorage.getItem("nomeAtual");
   
-
-  console.log(idTask);
-  console.log(nome);
+  alert(idTask);
+ 
   
   tasks.forEach((task) => {
       if(idTask == task.id) {
-        alert(task.name);
-        task.name = document.getElementById("taskName").value;
-        alert(task.name);
+        task.name = document.getElementById("taskName").value; 
         save();
       }
-      }
-      
-    )};
+      });
+
+      tasksDoing.forEach((task) => {
+        if(idTask == task.id) {
+          task.name = document.getElementById("taskName").value;  
+          save();
+        }
+        });
+
+        tasksDone.forEach((task) => {
+          if(idTask == task.id) {
+            task.name = document.getElementById("taskName").value;
+            save();
+          }
+          });
+        };
 
 // Função para remover tarefa
 //! verificar se está a remover a tarefa certa!
