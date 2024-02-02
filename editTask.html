@@ -17,6 +17,7 @@
           type="text"
           class="textBox limitBox taskName name-"
           id="taskName"
+          value= ""
           required
         />
         <br />
@@ -32,7 +33,7 @@
         ></textarea>
         <br />
         <div class="container-btn" id="btn-center">
-          <button class="btn" onclick="backToHome()">Gravar</button>
+          <button class="btn" onclick="editTask(),backToHome()">Gravar</button>
           <button class="btn" onclick="">Eliminar</button>
           <!-- ELIMINAATE TASK-->
           <button
@@ -45,6 +46,6 @@
         </div>
       </div>
     </div>
-    <script src="app.js"></script>
+    <script src="editarTarefa.js"></script>
   </body>
 </html>
