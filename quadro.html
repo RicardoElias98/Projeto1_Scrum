@@ -6,25 +6,17 @@
     <link rel="stylesheet" href="interface.css" />
   </head>
   <body>
-    <!--<video id="video-background" autoplay muted loop>
-      <source
-        src="Imagens/mylivewallpapers.com-FIXED-Living-Room-Chill.mp4"
-        type="video/mp4"
-      />
-    </video>-->
-
     <div class="borderMain quadro" id="quadro">
       <div class="title">
         <h1>Scrum Board</h1>
         <img src="Imagens/logoScrum.png" class="logo-dimension" />
       </div>
-      <!--O header não deve ter todos estes elementos.-->
       <header>
         <button
           type="button"
           class="btn addTaskButton plus"
           id="createTask"
-          onclick="criarTarefa()"
+          onclick="openAddTaskModal()"
         >
           Adicionar tarefa
         </button>
