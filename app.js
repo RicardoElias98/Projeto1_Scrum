@@ -32,11 +32,6 @@ window.onload = function () {
   }
 };
 
-function GuardarUsername() {
-  let username = document.getElementById("username").value;
-  localStorage.setItem("usernameGravado", username);
-}
-
 /* Função para ver a password através da checkbox */
 function VerPassword() {
   var passwordInput = document.getElementById("password");
