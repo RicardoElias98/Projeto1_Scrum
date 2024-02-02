@@ -42,7 +42,6 @@ function deleteTask() {
 
   tasks.forEach((task, index) => {
     if (idTask == task.id) {
-      alert(index);
       tasks.splice(index, 1);
       save();
     }
