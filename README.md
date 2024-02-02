@@ -1,1 +1,4 @@
-# Projeto1_Scrum
+Trabalho realizado por:
+Ricardo Carvalho e Ricardo Elias
+
+
