@@ -3,12 +3,10 @@ html {
   height: 100vh; /* "viewport height" - ocupa sempre a altura toda da janela mesmo que redimensiodada */
   margin: 0;
   display: flex; /* cria um layout flexível  */
-  align-items: taskDescriptioncenter; /* alinha verticalmente */
   justify-content: center; /* alinha horizontal */
   width: 100%;
   background-image: url(Imagens/download.png);
   background-size: cover;
-  background-position: fixed;
 }
 
 /* Estilo do "painel do login" */
@@ -348,17 +346,7 @@ h2 {
 .textBox:hover {
   box-shadow: 0.5px 2px 0.5px black;
 }
-.close-button {
-  position: relate;
-  top: 0;
-  right: 0;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0);
-  border: solid 1px black;
-  color: black;
-}
+
 .red {
   background-color: rgb(218, 76, 76);
 }

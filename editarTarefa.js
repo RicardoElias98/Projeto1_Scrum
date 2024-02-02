@@ -40,23 +40,24 @@ function editTask() {
 function deleteTask() {
   let idTask = localStorage.getItem("idAtual");
 
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     if (idTask == task.id) {
-      tasks.splice(idTask, 1);
+      alert(index);
+      tasks.splice(index, 1);
       save();
     }
   });
 
-  tasksDoing.forEach((task) => {
+  tasksDoing.forEach((task, index) => {
     if (idTask == task.id) {
-      tasksDoing.splice(idTask, 1);
+      tasksDoing.splice(index, 1);
       save();
     }
   });
 
   tasksDone.forEach((task) => {
     if (idTask == task.id) {
-      tasksDone.splice(idTask, 1);
+      tasksDone.splice(index, 1);
       save();
     }
   });
