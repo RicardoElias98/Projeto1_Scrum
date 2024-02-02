@@ -17,7 +17,7 @@
           type="text"
           class="textBox limitBox taskName name-"
           id="taskName"
-          value= ""
+          value=""
           required
         />
         <br />
@@ -34,7 +34,9 @@
         <br />
         <div class="container-btn" id="btn-center">
           <button class="btn" onclick="editTask(),backToHome()">Gravar</button>
-          <button class="btn" onclick="">Eliminar</button>
+          <button class="btn" onclick="deleteTask(),backToHome()">
+            Eliminar
+          </button>
           <!-- ELIMINAATE TASK-->
           <button
             onclick="backToHome()"

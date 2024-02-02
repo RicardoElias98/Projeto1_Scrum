@@ -6,7 +6,8 @@ const containers = document.querySelectorAll(".coluna");
 
 window.onload = function () {
   if (localStorage.getItem("usernameGravado")) {
-    document.getElementById("nomeAaparecerNoEcra").innerHTML = localStorage.getItem("usernameGravado");
+    document.getElementById("nomeAaparecerNoEcra").innerHTML =
+      localStorage.getItem("usernameGravado");
   }
   if (localStorage.getItem("id")) {
     id = localStorage.getItem("id");
@@ -33,9 +34,8 @@ window.onload = function () {
 
 function GuardarUsername() {
   let username = document.getElementById("username").value;
-  localStorage.setItem("usernameGravado",username);
+  localStorage.setItem("usernameGravado", username);
 }
-
 
 // Evento para criar tarefa apenas clicar no botão s/ (). Se colocar () cria logo a tarefa
 // A condição if é para não criar tarefa quando se carrega no botão de fechar o modal
@@ -123,10 +123,9 @@ function closeAddTaskModal() {
 function Task(name, description) {
   this.name = name;
   this.description = description;
-  this.id = (id++) + "task";
+  this.id = id++ + "task";
   this.status = "ToDo";
   localStorage.setItem("id", id);
-  
 }
 // Função para adicionar tarefa
 function addTaskModal(event) {
@@ -169,7 +168,7 @@ function createElements(task) {
   newTaskElement.className = "task";
   newTaskElement.textContent = task.name;
   newTaskElement.id = task.id;
-  newTaskElement.description= task.description;
+  newTaskElement.description = task.description;
   newTaskElement.draggable = true;
 
   // Add event listeners for drag and drop functionality to use CSS
@@ -182,65 +181,44 @@ function createElements(task) {
   newTaskElement.addEventListener("click", (e) => {
     // Redirect to the editTask.html page
     let clickedId = e.target.id; // Get the ID of the clicked task
-    let clickedName = e.target.textContent; 
+    let clickedName = e.target.textContent;
     let clickedDescription = e.target.description;
     //alert(clickedId);
-    localStorage.setItem("idAtual",clickedId);
-    localStorage.setItem("nomeAtual",clickedName);
-    localStorage.setItem("descricaoAtual",clickedDescription);
+    localStorage.setItem("idAtual", clickedId);
+    localStorage.setItem("nomeAtual", clickedName);
+    localStorage.setItem("descricaoAtual", clickedDescription);
     //document.getElementById("taskName").value = clickedName;
     window.location.href = "./editTask.html";
     //alert(clickedName);
-    
   });
   column.appendChild(newTaskElement);
 }
 
-
-
 function editTask() {
   let idTask = localStorage.getItem("idAtual");
-  
+
   alert(idTask);
- 
-  
+
   tasks.forEach((task) => {
-      if(idTask == task.id) {
-        task.name = document.getElementById("taskName").value; 
-        save();
-      }
-      });
-
-      tasksDoing.forEach((task) => {
-        if(idTask == task.id) {
-          task.name = document.getElementById("taskName").value;  
-          save();
-        }
-        });
-
-        tasksDone.forEach((task) => {
-          if(idTask == task.id) {
-            task.name = document.getElementById("taskName").value;
-            save();
-          }
-          });
-        };
-
-// Função para remover tarefa
-//! verificar se está a remover a tarefa certa!
-function removeTask(task) {
-  // Remove the task from the tasks array
-  tasks = tasks.filter(function (task) {
-    return task.id !== taskId;
+    if (idTask == task.id) {
+      task.name = document.getElementById("taskName").value;
+      save();
+    }
   });
-  // Remove the task element from the DOM if it exists
-  var taskElement = document.getElementById(taskId);
-  if (taskElement) {
-    taskElement.remove();
-  } else {
-    console.log("Task element not found");
-  }
-  save();
+
+  tasksDoing.forEach((task) => {
+    if (idTask == task.id) {
+      task.name = document.getElementById("taskName").value;
+      save();
+    }
+  });
+
+  tasksDone.forEach((task) => {
+    if (idTask == task.id) {
+      task.name = document.getElementById("taskName").value;
+      save();
+    }
+  });
 }
 
 // Add event listeners for drag and drop functionality to all columns
