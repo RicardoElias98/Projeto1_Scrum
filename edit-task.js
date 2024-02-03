@@ -19,6 +19,7 @@ window.onload = function () {
   document.getElementById("taskDescription").value = descriptionTask;
 };
 /*---------------*/
+// Verifica se os campos estão preenchidos e retorna um booleano
 function updateValues(task) {
   newName = document.getElementById("taskName").value;
   newDescription = document.getElementById("taskDescription").value;
@@ -63,6 +64,7 @@ function editTask() {
       break;
     }
   }
+  // Se o booleano for true redireciona para o scrum-board.html pois não há campos vazios
   if (bool == true) {
     window.location.href = "./scrum-board.html";
   }

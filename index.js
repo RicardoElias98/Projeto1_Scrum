@@ -2,6 +2,7 @@ const login = document.getElementById("login");
 login.addEventListener("click", () => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
+  // Verificar se o username e a password estão preenchidos
   if (username.trim() == "" || password.trim() == "") {
     const error = document.getElementById("error-login");
     error.textContent = "Verifique o username e a password!";

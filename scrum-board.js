@@ -57,7 +57,7 @@ window.onload = function () {
 };
 /* ---------------------------- */
 
-/* Função para ver a password através da checkbox */
+// Função para ver a password através da checkbox
 function VerPassword() {
   var passwordInput = document.getElementById("password");
   var verPasswordCheckbox = document.getElementById("verPasswordCheckbox");
@@ -162,7 +162,7 @@ function createElements(task) {
   column.appendChild(newTaskElement); //por fim adiciona o elemento à coluna respetiva dessa task
 }
 
-/* Percorre os containers que são onde é possivel 'largar' a tarefa dando ações aos mesmos caso se passe sobre eles, ou se largue algo nesses mesmo con */
+// Percorre os containers que são onde é possivel 'largar' a tarefa dando ações aos mesmos caso se passe sobre eles, ou se largue algo nesses mesmo containers
 containers.forEach((container) => {
   container.addEventListener("dragover", (e) => {
     e.preventDefault(); // Previne o comportamento padrão do evento "dragover"
@@ -202,7 +202,7 @@ function addTaskToArray(container, targetTask) {
 
 // Verifica se a tarefa existe nos arrays
 function verify(targetTaskId) {
-  /* Procura a tarefa indicada nos 3 arrays */
+  // Procura a tarefa indicada nos 3 arrays
   let targetTask =
     tasks.find((task) => task.id === targetTaskId) ||
     tasksDoing.find((task) => task.id === targetTaskId) ||
@@ -215,7 +215,7 @@ function backToHome() {
   window.location.href = "./scrum-board.html";
 }
 
-/* Gravar os arrays em localStorage */
+// Gravar os arrays em localStorage
 function save() {
   localStorage.setItem("tasksToDo", JSON.stringify(tasks));
   localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
