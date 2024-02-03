@@ -19,37 +19,53 @@ window.onload = function () {
   document.getElementById("taskDescription").value = descriptionTask;
 };
 /*---------------*/
+function updateValues(task) {
+  newName = document.getElementById("taskName").value;
+  newDescription = document.getElementById("taskDescription").value;
 
+  if (newName.trim() == "" || newDescription.trim() == "") {
+    const error = document.getElementById("error-edit");
+    error.textContent = "Não pode submeter campos vazios!";
+    return false;
+  } else {
+    task.name = newName;
+    task.description = newDescription;
+    return true;
+  }
+}
 /*---------------*/
 //Função editar Tarefa
 // 1- recupera o id da task carregada
 // 2- percorre as arrays e assim que encontrar a task certa com o respetivo id troca o nome antigo pelo texto que estiver no texto quando carregar no botão "Gravar"
 function editTask() {
   let idTask = localStorage.getItem("idAtual");
-
-  tasks.forEach((task) => {
+  let bool;
+  for (const task of tasks) {
     if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      task.description = document.getElementById("taskDescription").value;
+      bool = updateValues(task);
       save();
+      break;
     }
-  });
+  }
 
-  tasksDoing.forEach((task) => {
+  for (const task of tasksDoing) {
     if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      task.description = document.getElementById("taskDescription").value;
+      bool = updateValues(task);
       save();
+      break;
     }
-  });
+  }
 
-  tasksDone.forEach((task) => {
+  for (const task of tasksDone) {
     if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      task.description = document.getElementById("taskDescription").value;
+      bool = updateValues(task);
       save();
+      break;
     }
-  });
+  }
+  if (bool == true) {
+    window.location.href = "./scrum-board.html";
+  }
 }
 /*---------------*/
 

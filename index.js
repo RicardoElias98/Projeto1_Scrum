@@ -1,8 +1,10 @@
 const login = document.getElementById("login");
 login.addEventListener("click", () => {
   const username = document.getElementById("username").value;
-  if (username.trim() === "") {
-    alert("O username não pode ser vazio!");
+  const password = document.getElementById("password").value;
+  if (username.trim() == "" || password.trim() == "") {
+    const error = document.getElementById("error-login");
+    error.textContent = "Verifique o username e a password!";
   } else {
     localStorage.setItem("username", username);
     window.location.href = "./scrum-board.html";

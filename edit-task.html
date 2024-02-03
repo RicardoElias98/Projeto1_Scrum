@@ -9,31 +9,20 @@
   <body>
     <div class="w-design w-size w-align">
       <div class="title"><h2>Editar Tarefa</h2></div>
-      <br />
-      <div class="modal-design">
+      <div class="modal-design margin">
         <label class="left-align"><b>Nome da Tarefa:</b></label>
-        <input
-          type="text"
-          class="text-box box-design"
-          id="taskName"
-          value=""
-          required
-        />
-        <br />
-        <label id="editTaskDescription" class="left-align"
+        <input type="text" class="text-box box-design" id="taskName" />
+
+        <label id="editTaskDescription" class="left-align margin"
           ><b>Descrição:</b></label
         >
         <!-- Fix the ID to match the JavaScript code -->
         <textarea
           id="taskDescription"
           class="text-box box-design description-text"
-          required
         ></textarea>
-        <br />
         <div class="container-btn margin">
-          <button class="btn green" onclick="editTask(),backToHome()">
-            Gravar
-          </button>
+          <button class="btn green" onclick="editTask()">Gravar</button>
           <button class="btn" onclick="deleteTask(),backToHome()">
             Eliminar
           </button>
@@ -46,6 +35,7 @@
             Cancelar
           </button>
         </div>
+        <div class="center-container error-info" id="error-edit"></div>
       </div>
     </div>
     <script src="edit-task.js"></script>

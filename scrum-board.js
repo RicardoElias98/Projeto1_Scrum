@@ -105,6 +105,9 @@ function addTaskModal(event) {
     closeAddTaskModal();
     //grava os novos dados no localStorage
     save();
+  } else {
+    const error = document.getElementById("error-create");
+    error.textContent = "Não pode submeter campos vazios!";
   }
 }
 
@@ -135,14 +138,14 @@ function createElements(task) {
   newTaskElement.description = task.description;
   newTaskElement.draggable = true;
 
-  /* RICARDO  */
+  // Adiciona a classe dragging quando a tarefa é 'agarra' e remove quando é 'largada'
+  // dragging é uma classe que dá um efeito visual à tarefa quando é arrastada
   newTaskElement.addEventListener("dragstart", () => {
     newTaskElement.classList.add("dragging");
   });
   newTaskElement.addEventListener("dragend", () => {
     newTaskElement.classList.remove("dragging");
   });
-  /* RICARDO  */
 
   //Cada elemento criado terá um evento de "click"
   newTaskElement.addEventListener("click", (e) => {
@@ -158,72 +161,69 @@ function createElements(task) {
   });
   column.appendChild(newTaskElement); //por fim adiciona o elemento à coluna respetiva dessa task
 }
-/* ---------------------------- */
-/* ---------------------------- */
 
-/* RICARDO  */
+/* Percorre os containers que são onde é possivel 'largar' a tarefa dando ações aos mesmos caso se passe sobre eles, ou se largue algo nesses mesmo con */
 containers.forEach((container) => {
   container.addEventListener("dragover", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previne o comportamento padrão do evento "dragover"
   });
   container.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const draggable = document.querySelector(".dragging"); // The task we want to drop
-    container.appendChild(draggable); // Drop the task in the column
-    let targetTaskId = draggable.id; // Get the id of the task we're dragging
-    let targetTask = verify(targetTaskId); // Verify if the task exists
+    e.preventDefault(); // Previne o comportamento padrão do evento "drop"
+    const draggable = document.querySelector(".dragging"); // A tarefa que queremos soltar
+    container.appendChild(draggable); // Solta a tarefa na coluna
+    let targetTaskId = draggable.id; // Obtém o id da tarefa que estamos a arrastar
+    let targetTask = verify(targetTaskId); // Verifica se a tarefa existe
     if (targetTask) {
-      // If the task exists
-      let targetCurrentStatus = targetTask.status; // Remove the task from the array based on the current status
-      eliminateTask(targetCurrentStatus, targetTaskId); // Update the status of the task based on the id of the container
+      // Se a tarefa existe
+      let targetCurrentStatus = targetTask.status; // Remove a tarefa do array com base no status atual
+      eliminateTask(targetCurrentStatus, targetTaskId); // Atualiza o status da tarefa com base no id do container
       addTaskToArray(container, targetTask);
     }
-    // Save the updated arrays to local storage
+    // Salva os arrays atualizados no armazenamento local
     save();
   });
 });
-// Add the task to the correct array based on the id of the container
+// Adiciona a tarefa ao array correto com base no id do container
 function addTaskToArray(container, targetTask) {
   if (container.id === "ToDo") {
-    targetTask.status = "ToDo";
-    tasks.push(targetTask);
-    save();
+    targetTask.status = "ToDo"; // Define o status da tarefa como "ToDo"
+    tasks.push(targetTask); // Adiciona a tarefa ao array de ToDo
+    save(); // Salva as alterações
   } else if (container.id === "doing") {
-    targetTask.status = "doing";
-    tasksDoing.push(targetTask);
-    save();
+    targetTask.status = "doing"; // Define o status da tarefa como "doing"
+    tasksDoing.push(targetTask); // Adiciona a tarefa ao array doing
+    save(); // Salva as alterações
   } else if (container.id === "done") {
-    targetTask.status = "done";
-    tasksDone.push(targetTask);
-    save();
+    targetTask.status = "done"; // Define o status da tarefa como "done"
+    tasksDone.push(targetTask); // Adiciona a tarefa ao array done
+    save(); // Salva as alterações
   }
 }
 
-// Verify if the task exists
+// Verifica se a tarefa existe nos arrays
 function verify(targetTaskId) {
+  /* Procura a tarefa indicada nos 3 arrays */
   let targetTask =
     tasks.find((task) => task.id === targetTaskId) ||
     tasksDoing.find((task) => task.id === targetTaskId) ||
     tasksDone.find((task) => task.id === targetTaskId);
-  return targetTask;
+  return targetTask; // Retorna a tarefa encontrada
 }
-/* RICARDO  */
 
 //Função para voltar para o scrum-board.html
 function backToHome() {
   window.location.href = "./scrum-board.html";
 }
 
-/* RICARDO  */
+/* Gravar os arrays em localStorage */
 function save() {
   localStorage.setItem("tasksToDo", JSON.stringify(tasks));
   localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
   localStorage.setItem("tasksDone", JSON.stringify(tasksDone));
 }
-/* RICARDO  */
-/* RICARDO  */
 //Função para eliminar uma tarefa
 function eliminateTask(targetCurrentStatus, targetTaskId) {
+  // Dependendo do status atual da tarefa, procura-a e remove-a do array correspondente.
   if (targetCurrentStatus === "ToDo") {
     tasks = tasks.filter((task) => task.id !== targetTaskId);
   } else if (targetCurrentStatus === "doing") {
@@ -232,4 +232,3 @@ function eliminateTask(targetCurrentStatus, targetTaskId) {
     tasksDone = tasksDone.filter((task) => task.id !== targetTaskId);
   }
 }
-/* RICARDO  */
