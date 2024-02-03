@@ -106,10 +106,9 @@ function backToHome() {
 /*---------------*/
 /*---------------*/
 
-/* RICARDO */
+/* Gravar os arrays em localStorage */
 function save() {
   localStorage.setItem("tasksToDo", JSON.stringify(tasks));
   localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
   localStorage.setItem("tasksDone", JSON.stringify(tasksDone));
 }
-/* RICARDO */
