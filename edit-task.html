@@ -10,7 +10,7 @@
     <div class="w-design w-size w-align">
       <div class="title"><h2>Editar Tarefa</h2></div>
       <br />
-      <div class="prop">
+      <div class="modal-design">
         <label class="left-align"><b>Nome da Tarefa:</b></label>
         <input
           type="text"
@@ -30,8 +30,10 @@
           required
         ></textarea>
         <br />
-        <div class="container-btn" id="btn-center">
-          <button class="btn" onclick="editTask(),backToHome()">Gravar</button>
+        <div class="container-btn margin">
+          <button class="btn green" onclick="editTask(),backToHome()">
+            Gravar
+          </button>
           <button class="btn" onclick="deleteTask(),backToHome()">
             Eliminar
           </button>

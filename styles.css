@@ -8,18 +8,45 @@ html {
   background-size: cover;
   padding: 0;
 }
+header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-height: 30px;
+  height: 5%;
+  width: 100%;
+  align-items: center;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+  height: 85%;
+  width: 100%; /* Ocupa a largura total */
+}
 body {
   display: flex;
   align-items: center;
 }
+footer {
+  height: 5%;
+  width: 100%; /* Ocupa a largura total */
+  text-align: center;
+  vertical-align: sub;
+  flex-wrap: nowrap;
+  font-size: 10px;
+}
 h1 {
   text-align: center;
+}
+h2 {
+  font-size: 24px;
+  margin: 0px;
 }
 h3 {
   text-align: left;
 }
+/*Disgn da janela, bordas e sombras*/
 .w-design {
-  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0.5px 2px 0.5px black;
   border-radius: 8px;
@@ -28,23 +55,45 @@ h3 {
   box-shadow: 1px 3px 1px black;
   border-radius: 8px;
 }
+/*Dimensões da janela*/
 .w-size {
   height: 450px;
   width: 300px;
   margin: 50px auto;
   padding: 20px;
 }
+/*Posicionamento dos elementos*/
 .w-align {
   display: flex;
   flex-direction: column;
 }
+/*Dimensões e disgin da janela principal do Scrum*/
+.w-main {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 70rem; /* largura */
+  height: 85%;
+  max-width: 85%;
+  margin: auto;
+  padding: 20px;
+}
+/* Disgn do titulo da janela principal do Scrum */
+.w-main .title {
+  display: flex;
+  justify-content: left;
+  margin: 0px;
+  padding: 0px;
+  font-size: 10px;
+}
+/* Disgn do titulo da janela de Login */
 .login-title {
   color: black;
   text-transform: uppercase;
 }
+/* Altura da caixa de texto */
 .text-box {
   height: 1.5rem;
 }
+/* Disgn da caixa de texto */
 .box-design {
   border-radius: 6px;
   border: solid 1px black;
@@ -52,21 +101,17 @@ h3 {
 .box-design:hover {
   box-shadow: 0.5px 1.5px 0.5px black;
 }
-#checkPassword {
-  display: flex;
-  flex-direction: row;
-  font-size: 0.7rem;
-}
-
 .left-align {
   text-align: left;
 }
-
+/* Tamanho da caixa de texto para as descrições */
 .description-text {
   height: 15rem;
   resize: none;
+  width: 100%;
 }
-.m-window {
+/* Disgn da janela do Modal */
+.w-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -77,6 +122,7 @@ h3 {
   z-index: 10;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+/* Disgn do fundo do modal centrado, fixo, invisivel incialmente*/
 .modal-background {
   display: none;
   position: fixed;
@@ -87,70 +133,13 @@ h3 {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9; /* Z-index menor que o modal para garantir que esteja abaixo */
 }
-h2 {
-  font-size: 24px;
-  font-weight: bolder;
+/* Disgn da janela do modal */
+.modal-design {
+  display: flex;
+  flex-direction: column;
   margin: 0px;
 }
-/* CLEAR */
-.window-extra {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 400px;
-}
-.textBox {
-  border-radius: 8px;
-  border: solid 2px black;
-}
-
-.dimensions {
-  display: flex;
-  flex-direction: column;
-  /* "viewport height" - ocupa sempre a altura toda da janela mesmo que redimensiodada */
-  width: 300px;
-  margin: 0;
-  align-items: center; /* alinha verticalmente */
-  justify-content: center; /* alinha horizontal */
-}
-
-.quadro {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 1000px; /* largura */
-  height: 85%;
-  max-width: 85%;
-}
-.whiteOpacity {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-header {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  min-height: 30px;
-  height: 5%; /* Definir altura do header como 10% do #quadro */
-  width: 100%; /* Ocupa a largura total do #quadro */
-  align-items: center;
-}
-
-main {
-  display: flex;
-  justify-content: space-between;
-  height: 85%; /* Definir altura do header como 10% do #quadro */
-  width: 100%; /* Ocupa a largura total do #quadro */
-  /*background-color: rgb(122, 65, 59);*/
-}
-
-footer {
-  height: 5%; /* Definir altura do header como 10% do #quadro */
-  width: 100%; /* Ocupa a largura total do #quadro */
-  text-align: center;
-  vertical-align: sub;
-  /*background-color: aquamarine;*/
-}
-/* blocos de coluna + title */
-/* BLOCO DE COLUNA */
+/* Container do titulo e das colunas */
 .container-columns-title {
   display: flex;
   flex: 1;
@@ -159,29 +148,8 @@ footer {
   max-width: 100%;
   border-radius: 8px;
   margin: 1%;
-  /*background-color: royalblue;*/
 }
-.border {
-  border: solid 1px black;
-  box-shadow: 0.5px 2px 0.5px black;
-}
-.border:hover {
-  box-shadow: 1px 3px 1px black;
-}
-.borderMain {
-  box-shadow: 1px 6px 1px black;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-}
-.opacity {
-  opacity: 0.5;
-}
-.opacity-solid {
-  opacity: 1;
-}
-
+/* Container principal das colunas */
 .container-columns {
   display: flex;
   flex-direction: row;
@@ -191,9 +159,8 @@ footer {
   align-content: stretch;
   height: 100%;
   width: 100%;
-  /*background-color: rgb(122, 65, 59);*/
 }
-
+/* Container das tarefas onde podem ser largadas */
 .coluna {
   width: 100%; /* Ajuste a largura conforme necessário */
   height: 100%;
@@ -201,7 +168,7 @@ footer {
   overflow-y: auto;
   direction: inherit;
 }
-
+/* Disgn das tarefas */
 .task {
   background-color: white;
   padding: 10%;
@@ -215,8 +182,9 @@ footer {
 .task:hover {
   box-shadow: 1px 3px 1px black;
 }
-
+/* Disgn do titulo das colunas */
 .column-title {
+  text-align: center;
   font-size: 24px;
   color: black;
   text-transform: uppercase;
@@ -237,10 +205,7 @@ footer {
 .done {
   background-color: #f27752;
 }
-#createTask {
-  font-size: 14px;
-  float: left;
-}
+/* Disgn do botão */
 .btn {
   border: solid 1px black;
   color: black;
@@ -256,81 +221,49 @@ footer {
   color: white;
   box-shadow: none;
 }
-.top-btn {
-}
-
+/* Username no quadro Scrum */
 #nomeAaparecerNoEcra {
   color: black;
   font-weight: bolder;
   vertical-align: center;
   text-shadow: 0px 1px 0px gray; /* Sombra do texto */
 }
-
-.footer-r {
-  flex-wrap: nowrap;
-  font-size: 10px;
-}
+/* Disgn do item durante o arrastamento */
 .dragging {
   opacity: 0.5;
   border-style: dashed;
   box-shadow: 0px 0px 0px 0px;
 }
-.click {
-  background-color: rgba(0, 0, 0, 0);
-  box-shadow: 3px 3px 3px 3px;
-}
-.prop {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-}
-
-.black-label {
-  color: black;
-}
-
-.textBox:hover {
-  box-shadow: 0.5px 2px 0.5px black;
-}
-
+/* Cor do botão de cancelar */
 .red {
   background-color: rgb(218, 76, 76);
 }
 .red:hover {
   background-color: rgb(255, 0, 0);
 }
-
-.addTask {
-  flex: 1;
-  width: 300px;
-  height: 400px;
+/* Cor do botão de adicionar */
+.green {
 }
-.taskDescriptionAdd {
-  width: 100%;
-  width: 300px;
-  resize: none;
+.green:hover {
+  background-color: rgb(125, 207, 125);
 }
-textarea {
-  box-sizing: border-box;
-}
-.borderMain .title {
+/* Centralização dos elementos do container */
+.center-container {
   display: flex;
-  justify-content: left;
-  /*background-color: aliceblue;*/
-  margin: 0px;
-  padding: 0px;
-  font-size: 10px;
+  flex-direction: column;
+  align-items: center;
 }
-
+/* Disgn do botão de adicionar antes de algo */
 .plus::before {
   content: "\2795"; /* Unicode for heavy plus sign */
-  margin-right: 5px; /* Space between the icon and the text */
+  color: white;
 }
 .logo-dimension {
   margin-left: 5px;
   width: 50px;
   height: 50px;
 }
+/* Disgn do container dos botões */
 .container-btn {
   display: flex;
   justify-content: center;
@@ -338,30 +271,22 @@ textarea {
   margin-bottom: 0px;
   gap: 10px;
 }
-.flex-btn {
-  display: flex;
-
-  justify-content: space-around;
-  align-items: center;
+/* Disgn do botão de login */
+.login {
+  width: 10rem;
+  height: 2rem;
+  background-color: #1c3743;
+  color: white;
 }
-#btn-center {
-  display: flex;
-  justify-content: center;
-  justify-content: center;
-  margin-bottom: 0px;
-  gap: 10px;
+.login:hover {
+  background-color: #577988;
 }
+/* Margem extra */
 .margin {
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin-top: 1.2rem;
+  margin-bottom: 0px;
 }
-.name-box {
-  height: 50px;
-}
-.description-box {
-  height: 300px;
-}
-
+/* Fonte igual em todo o site */
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
