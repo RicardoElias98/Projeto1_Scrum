@@ -286,6 +286,9 @@ h3 {
   margin-top: 1.2rem;
   margin-bottom: 0px;
 }
+.error-info {
+  font-size: 0.7rem;
+}
 /* Fonte igual em todo o site */
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
