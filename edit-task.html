@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <div class="borderMain window-extra whiteOpacity" id="editTask">
-      <div class="main-top title"><h2>Editar Tarefa</h2></div>
+    <div class="w-design w-size w-align">
+      <div class="title"><h2>Editar Tarefa</h2></div>
       <br />
       <div class="prop">
-        <label class="taskName left-align">Nome da Tarefa:</label>
+        <label class="left-align"><b>Nome da Tarefa:</b></label>
         <input
           type="text"
-          class="textBox limitBox taskName name-"
+          class="text-box box-design"
           id="taskName"
           value=""
           required
         />
         <br />
-        <label id="editTaskDescription" class="taskName left-align"
-          >Descrição:</label
+        <label id="editTaskDescription" class="left-align"
+          ><b>Descrição:</b></label
         >
         <!-- Fix the ID to match the JavaScript code -->
         <textarea
           id="taskDescription"
-          class="textBox limitBox taskDescription description-box"
+          class="text-box box-design description-text"
           required
         ></textarea>
         <br />
