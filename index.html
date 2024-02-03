@@ -8,42 +8,53 @@
   </head>
   <body>
     <!-- Criação da classe formulário do login e direcionada para "action=''""-->
-    <div class="formulario_do_login">
+    <div class="w-design w-size w-align">
       <!-- action="quadro.html -->
-      <label id="TituloPainelLogin" for="formulario_do_login"
-        >Iniciar Sessão</label
+      <label for="title" class="login-title margin"
+        ><h1><b>Iniciar Sessão</b></h1></label
       >
       <!-- Label do username -->
-      <label for="username">Nome de Utilizador:</label>
+      <label for="username"><h3>Nome de Utilizador:</h3></label>
       <!-- Tipo texto, com id, nome e com required (tem de ser preenchida para avançar) -->
       <input
         type="text"
+        class="text-box box-design"
         id="username"
         name="username"
-        required
         maxlength="25"
+        placeholder="Username"
+        required
       />
-      <br />
-      <br />
+
       <!-- Label da password -->
-      <label for="password">Palavra-passe:</label>
+      <label for="password"><h3>Palavra-passe:</h3></label>
       <!-- Tipo password, com id, nome e com required (tem de ser preenchida para avançar) -->
-      <input type="password" id="password" name="password" required />
-      <br />
-      <br />
+      <input
+        type="password"
+        class="text-box box-design"
+        id="password"
+        name="password"
+        placeholder="Palavra-passe"
+        required
+      />
+
       <!-- Checkbox com o método em JS para ver a passord -->
+
       <div id="checkPassword">
         <input
           type="checkbox"
           onclick="verPassword()"
           id="verPasswordCheckbox"
         />
-        <label for="verPasswordCheckbox"> Ver Palavra-passe</label>
+        <label for="verPasswordCheckbox">Ver Palavra-passe</label>
       </div>
       <br />
       <br />
-      <!-- Botão para concluir o login -->
-      <button id="login">Login</button>
+      <div class="center-container">
+        <!-- Botão para concluir o login -->
+        <button id="login" class="btn login">Login</button>
+      </div>
+      <div class="center-container" id="login-info"></div>
     </div>
     <script src="./index.js"></script>
   </body>

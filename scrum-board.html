@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="borderMain quadro whiteOpacity" id="quadro">
-      <div class="title">
+    <div class="w-design w-main">
+      <div class="title left-align">
         <h1>Scrum Board</h1>
         <img
           src="./Imagens/logoScrum.png"
@@ -18,14 +18,14 @@
       <header>
         <button
           type="button"
-          class="btn addTaskButton plus"
+          class="btn plus"
           id="createTask"
           onclick="openAddTaskModal()"
         >
           Adicionar tarefa
         </button>
         <div>
-          <label id="nomeAaparecerNoEcra"></label>
+          <label id="nomeAaparecerNoEcra"/></label>
           <button type="button" class="btn" id="logout" onclick="logout()">
             Logout
           </button>
@@ -34,51 +34,48 @@
 
       <main>
         <div class="container-columns">
-          <div class="container-columns-title border">
+          <div class="container-columns-title w-design">
             <h2 class="column-title todo">To do</h2>
             <div class="coluna" id="ToDo"></div>
           </div>
-          <div class="container-columns-title border">
+          <div class="container-columns-title w-design">
             <h2 class="column-title doing">Doing</h2>
             <div class="coluna" id="doing"></div>
           </div>
-          <div class="container-columns-title border">
+          <div class="container-columns-title w-design">
             <h2 class="column-title done">Done</h2>
             <div class="coluna" id="done"></div>
           </div>
         </div>
 
         <!-- Modal -->
-        <div
-          id="addTaskModal"
-          class="formulario_do_modal borderMain window-extra"
-        >
+        <div id="addTaskModal" class="w-modal w-design w-size w-align">
           <h2 class="left-align margin">Adicionar Tarefa</h2>
           <form onsubmit="addTaskModal(); return false;">
-            <div class="prop">
-              <label for="addTaskName" class="margin left-align"
-                >Nome da Tarefa:</label
+            <div class="modal-design">
+              <label for="addTaskName" class="left-align margin"
+                ><b>Nome da Tarefa:</b></label
               >
               <input
                 type="text"
                 id="addTaskName"
-                class="textBox box-size margin name-box"
+                class="text-box box-design"
+                placeholder="Nome da Tarefa"
                 required
               />
-              <label
-                for="addTaskDescription"
-                class="texBox limitBox box-size margin left-align"
-                >Descrição:</label
+              <label for="addTaskDescription" class="left-align margin"
+                ><b>Descrição:</b></label
               >
               <!-- Fix the ID to match the JavaScript code -->
               <textarea
                 id="addTaskDescription"
-                class="textBox limitBox taskDescriptionAdd description-box box-size margin"
+                class="text-box box-design description-text"
+                placeholder="Descrição da Tarefa"
                 required
               ></textarea>
             </div>
           </form>
-          <div class="container-btn">
+          <div class="container-btn margin">
             <button type="submit" class="btn" onclick="addTaskModal(event)">
               Adicionar
             </button>
@@ -97,10 +94,8 @@
         <div class="modal-background" onclick="closeAddTaskModal()"></div>
       </main>
       <footer>
-        <div class="footer-r">
-          AoR - Projeto 1 - Quadro Scrum ®<br />
-          Ricardo Elias, Ricardo Carvalho
-        </div>
+        AoR - Projeto 1 - Quadro Scrum ®<br />
+        Ricardo Elias, Ricardo Carvalho
       </footer>
     </div>
     <script src="./scrum-board.js"></script>
