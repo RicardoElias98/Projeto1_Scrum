@@ -1,14 +1,33 @@
+/* ---------------------------- */
+
+/* Criação das variáveis:
+1) id inicial
+2) 3 arrays: lista do TO DO, lista do DOING e lista do DONE
+3) containers (seleciona todos os elementos da classe "coluna" que ficam armazeandos nesta classe que se torna numa NodeList
+*/
 let id = 1;
 let tasks = [];
 let tasksDoing = [];
 let tasksDone = [];
 const containers = document.querySelectorAll(".coluna");
+/* ---------------------------- */
 
+/* ---------------------------- */
+
+//Criação do botão logout que ao carregar nos leva para a página do login
 const logout = document.getElementById("logout");
 logout.addEventListener("click", () => {
   window.location.href = "./index.html";
 });
+/* ---------------------------- */
 
+/* ---------------------------- */
+
+/*Função onload da Scrum-Board:
+- ao abrir vai buscar o username guardado no localSotrage e troca o nome que aparece no ecrã (por default está vazio por esse username)
+- o mesmo para o id 
+- o mesmo para cada item onde converte o valor da array em String e chama a função createElements para cada task encontrada
+*/
 window.onload = function () {
   if (localStorage.getItem("username")) {
     document.getElementById("nomeAaparecerNoEcra").innerHTML =
@@ -36,6 +55,7 @@ window.onload = function () {
     });
   }
 };
+/* ---------------------------- */
 
 /* Função para ver a password através da checkbox */
 function VerPassword() {
@@ -49,24 +69,50 @@ function VerPassword() {
   }
 }
 
+/* ---------------------------- */
+
 // Funções do modal, janela que aparece quando clicamos no botão "Adicionar tarefa"
-// Função para abrir o modal
+
+// Função para abrir o modal fazendo com que fique visível
 function openAddTaskModal() {
   document.getElementById("addTaskModal").style.display = "block";
   document.querySelector(".modal-background").style.display = "block";
 }
 
-// Função para fechar o modal
+// Função para fechar o modal fazendo com que não fique visível e limpar os campos
 function closeAddTaskModal() {
   document.getElementById("addTaskModal").style.display = "none";
   document.querySelector(".modal-background").style.display = "none";
   document.getElementById("addTaskName").value = "";
   document.getElementById("addTaskDescription").value = "";
 }
-// Operacoes com tarefas
 
-//With function or class?
+// Função para adicionar tarefa
+function addTaskModal(event) {
+  event.preventDefault(); //impedir o comportamento padrão, por exemplo de recarregar a página quando é criada a tarefa
+  // Obtém os valores dos textos
+  var taskName = document.getElementById("addTaskName").value;
+  var taskDescription = document.getElementById("addTaskDescription").value;
+
+  if (taskName.trim() != "" && taskDescription.trim() != "") {
+    // Cria a nova Task
+    let task = new Task(taskName, taskDescription);
+    //Adiciona a task ao quadro
+    createElements(task);
+    //Adicona a task à array
+    tasks.push(task);
+    //fecha o modal
+    closeAddTaskModal();
+    //grava os novos dados no localStorage
+    save();
+  }
+}
+
+/* ---------------------------- */
+/* ---------------------------- */
+
 //Construtor das tarefas
+//Guarda o último id para ir incrementando na criação das próximas
 function Task(name, description) {
   this.name = name;
   this.description = description;
@@ -74,38 +120,14 @@ function Task(name, description) {
   this.status = "ToDo";
   localStorage.setItem("id", id);
 }
-// Função para adicionar tarefa
-function addTaskModal(event) {
-  event.preventDefault();
-  // Get the values from the form
-  var taskName = document.getElementById("addTaskName").value;
-  var taskDescription = document.getElementById("addTaskDescription").value;
-  // Create a new task object
-  let task = new Task(taskName, taskDescription);
-  addTaskToTable(task);
-  // Fechar o modal após adicionar a starefa
-  closeAddTaskModal();
-  save();
-}
 
-function addTaskToTable(task) {
-  // Create a new task element
-  createElements(task);
-  // Add the task to the tasks array
-  if (task.status === "ToDo") {
-    tasks.push(task);
-  } else if (task.status === "doing") {
-    tasksDoing.push(task);
-  } else if (task.status === "done") {
-    tasksDone.push(task);
-  }
-  save();
-}
-// Function to create the task elements, uppdate table
+/* ---------------------------- */
+
+//Funçãopara criar o Elemento da task
 function createElements(task) {
-  // Find the column that the task belongs to
+  // Encontra a coluna à qual pertence a task
   var column = document.getElementById(task.status);
-  // Create a new task element
+  // Cria um elemento para a mesma com classe, texto, id, descrição e permite que seja arrastado
   var newTaskElement = document.createElement("div");
   newTaskElement.className = "task";
   newTaskElement.textContent = task.name;
@@ -113,57 +135,33 @@ function createElements(task) {
   newTaskElement.description = task.description;
   newTaskElement.draggable = true;
 
-  // Add event listeners for drag and drop functionality to use CSS
+  /* RICARDO  */
   newTaskElement.addEventListener("dragstart", () => {
     newTaskElement.classList.add("dragging");
   });
   newTaskElement.addEventListener("dragend", () => {
     newTaskElement.classList.remove("dragging");
   });
+  /* RICARDO  */
+
+  //Cada elemento criado terá um evento de "click"
   newTaskElement.addEventListener("click", (e) => {
-    // Redirect to the editTask.html page
-    let clickedId = e.target.id; // Get the ID of the clicked task
-    let clickedName = e.target.textContent;
-    let clickedDescription = e.target.description;
+    let clickedId = e.target.id; //obtém o id da task clicada
+    let clickedName = e.target.textContent; //obtém o nome da task clicada
+    let clickedDescription = e.target.description; //obtém a descrição da task clicada
     //alert(clickedId);
-    localStorage.setItem("idAtual", clickedId);
-    localStorage.setItem("nomeAtual", clickedName);
-    localStorage.setItem("descricaoAtual", clickedDescription);
-    //document.getElementById("taskName").value = clickedName;
-    window.location.href = "./edit-task.html";
-    //alert(clickedName);
+    localStorage.setItem("idAtual", clickedId); //guarda no localStorage o id dessa task como o atual para usar na edição da mesma
+    localStorage.setItem("nomeAtual", clickedName); //guarda no localStorage o nome dessa task como o atual para usar na edição da mesma
+    localStorage.setItem("descricaoAtual", clickedDescription); //guarda no localStorage a descrição dessa task como o atual para usar na edição da mesma
+
+    window.location.href = "./edit-task.html"; //e ao ser carregada abre a página html "edit-task.html"
   });
-  column.appendChild(newTaskElement);
+  column.appendChild(newTaskElement); //por fim adiciona o elemento à coluna respetiva dessa task
 }
+/* ---------------------------- */
+/* ---------------------------- */
 
-function editTask() {
-  let idTask = localStorage.getItem("idAtual");
-
-  alert(idTask);
-
-  tasks.forEach((task) => {
-    if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      save();
-    }
-  });
-
-  tasksDoing.forEach((task) => {
-    if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      save();
-    }
-  });
-
-  tasksDone.forEach((task) => {
-    if (idTask == task.id) {
-      task.name = document.getElementById("taskName").value;
-      save();
-    }
-  });
-}
-
-// Add event listeners for drag and drop functionality to all columns
+/* RICARDO  */
 containers.forEach((container) => {
   container.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -200,15 +198,7 @@ function addTaskToArray(container, targetTask) {
     save();
   }
 }
-// Go to the editTask.html page when a task is clicked
-function backToHome() {
-  window.location.href = "./quadro.html";
-}
-function save() {
-  localStorage.setItem("tasksToDo", JSON.stringify(tasks));
-  localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
-  localStorage.setItem("tasksDone", JSON.stringify(tasksDone));
-}
+
 // Verify if the task exists
 function verify(targetTaskId) {
   let targetTask =
@@ -217,7 +207,22 @@ function verify(targetTaskId) {
     tasksDone.find((task) => task.id === targetTaskId);
   return targetTask;
 }
-// Remove the task from the array based on the current status
+/* RICARDO  */
+
+//Função para voltar para o scrum-board.html
+function backToHome() {
+  window.location.href = "./scrum-board.html";
+}
+
+/* RICARDO  */
+function save() {
+  localStorage.setItem("tasksToDo", JSON.stringify(tasks));
+  localStorage.setItem("tasksDoing", JSON.stringify(tasksDoing));
+  localStorage.setItem("tasksDone", JSON.stringify(tasksDone));
+}
+/* RICARDO  */
+/* RICARDO  */
+//Função para eliminar uma tarefa
 function eliminateTask(targetCurrentStatus, targetTaskId) {
   if (targetCurrentStatus === "ToDo") {
     tasks = tasks.filter((task) => task.id !== targetTaskId);
@@ -227,3 +232,4 @@ function eliminateTask(targetCurrentStatus, targetTaskId) {
     tasksDone = tasksDone.filter((task) => task.id !== targetTaskId);
   }
 }
+/* RICARDO  */
