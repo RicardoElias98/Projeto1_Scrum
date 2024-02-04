@@ -77,6 +77,8 @@ function VerPassword() {
 function openAddTaskModal() {
   document.getElementById("addTaskModal").style.display = "block";
   document.querySelector(".modal-background").style.display = "block";
+
+  document.getElementById("error-create").textContent = ""; // Garante que o erro é limpo sempre que o modal é aberto
 }
 
 // Função para fechar o modal fazendo com que não fique visível e limpar os campos
